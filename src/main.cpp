@@ -4,7 +4,7 @@
 #include  "RemoteControlDriver.h"
 #include  "MotorDriver.h"
 #include  "stdio.h"
-#include  "Arduino.h"
+#include  <avr/io.h>
 
 void setup() {
   // put your setup code here, to run once:
