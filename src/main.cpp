@@ -8,7 +8,7 @@
 #include  "HupenSteuerung.h"
 
 void setup() {
-  
+  HupenSteuerungInit();
 }
 
 void loop() {
