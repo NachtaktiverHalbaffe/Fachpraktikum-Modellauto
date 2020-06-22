@@ -5,11 +5,20 @@
 #include  "MotorDriver.h"
 #include  "stdio.h"
 #include  <avr/io.h>
+#include  "HupenSteuerung.h"
 
 void setup() {
-  // put your setup code here, to run once:
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  /*
+   * ask for HORN_STATUS and in Case activate honk or not by using Honk-Function
+  */
+  static bool doHonk;
+  doHonk = GetRemoteSignal(HORN_STATUS);
+  Honk(doHonk);
+
+
+
 }
