@@ -32,20 +32,11 @@
 
 
 /****************************** declaration of variables ******************************/
-
 /****************************** end of variables **************************************/
 
 
 
 /****************************** declaration of functions ******************************/
-
-void MotorDriverInit(void);
-void MotorBreak(void);
-void MotorIdle(void);
-void DriveForward(int forward_value);
-void DriveReverse(int reverse_value);
-
-
 /****************************** end of functions **************************************/
 
 

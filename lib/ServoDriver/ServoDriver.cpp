@@ -36,11 +36,6 @@ Servo servosensor;
 
 
 /****************************** declaration of functions ******************************/
-
-void ServoInit(void);
-void SetSteering(int value);
-void SetSensor(int value);
-
 /****************************** end of functions **************************************/
 
 

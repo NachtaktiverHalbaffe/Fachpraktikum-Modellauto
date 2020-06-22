@@ -53,14 +53,6 @@ int horn_status;
 
 
 /****************************** declaration of functions ******************************/
-
-void RemotePinInit(void);
-int GetRemoteSignal(char channel);
-unsigned char GetDrivingDirection(void);
-unsigned char GetSteeringDirection(void);
-unsigned char GetLightSwitchStatus(void);
-unsigned char GetHornSwitchStatus(void);
-
 /****************************** end of functions **************************************/
 
 
