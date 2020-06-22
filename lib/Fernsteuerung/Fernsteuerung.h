@@ -1,14 +1,14 @@
-/*  Fahrlichtsteuerung.h
+/*  Fernsteuerung.h
 *   1.0 2020-06-22
 *
-*   the header for the driving light control system
+*   the header for the remote control
 *
 *   (C) IAS, Universität Stuttgart
 *   Author: Marei Schmidt
 */
 
-#ifndef FAHRLICHTSTEUERUNG_H_
-#define FAHRLICHTSTEUERUNG_H_
+#ifndef FERNSTEUERUNG_H_
+#define FERNSTEUERUNG_H_
 
 
 #include <avr/io.h>
@@ -20,12 +20,16 @@
 
 /**************************************** Methods **************************************************************************/
 
-void backwardslight (bool isDrivingBackwards);
+float getAcceleration (void);
 
-void drivinglights (bool isDark, bool inAutomaticOperation, bool lightManualOn);
+float getSteer (void);
 
-void brakelights (bool isBraking);
+bool getHonking (void);
+
+bool getLightManualOn (void);
+
+bool getManualOperation (void);
 
 
 
-#endif /* FARLICHTSTEUERUNG_H_ */
+#endif /* FERNSTEUERUNG_H_ */
