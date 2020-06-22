@@ -17,6 +17,8 @@ void setup() {
 
 void loop() {
   /*
+   * HONK
+   * 
    * ask for HORN_STATUS and in Case activate honk or not by using Honk-Function
   */
   static bool doHonk;
@@ -24,6 +26,8 @@ void loop() {
   Honk(doHonk);
 
   /*
+   * DRIVING_DIRECTION
+   * 
    * ask for DRIVING_DIRECTION from RemoteDriver and give it to the MotorDriver
    * GetRemoteSignal(DRIVING_DIRECTION) gives back a value between 0 and 1023
    * if the value is higher than 523  -> forward
