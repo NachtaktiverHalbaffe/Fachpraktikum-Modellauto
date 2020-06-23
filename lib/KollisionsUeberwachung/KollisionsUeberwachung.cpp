@@ -8,7 +8,6 @@
 /****************************** include files ******************************************/
 #include  <avr/io.h>
 #include  "GlobalDefinitions.h"
-#include  "SonicDriver.h"
 
 /****************************** end of include ****************************************/
 
@@ -25,7 +24,10 @@ const float threshHold= 0.5;
 
 /****************************** implementation of functions ***************************/
 void KollisionsUeberwachungInit(void){
-    
+    TCCR1A = 0;
+    TCCR1B = 0;
+    TCCR1B |= (1<<CS10); //prescaler 1
+    TIMSK1 |=(1<<TOIE1); // enable timer overflow
 }
 
 
