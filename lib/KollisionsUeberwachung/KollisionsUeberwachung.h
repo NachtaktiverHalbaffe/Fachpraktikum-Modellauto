@@ -44,9 +44,9 @@ float getVelocity(void);
 /*
  * unsigned int ReadSonic(unsigned char channel)
  *
- * check if a collision is appearing
+ * return: car is colliding (true) or not (false)
  */
-void collisioncontrol(void);
+bool collisioncontrol(void);
 
 /** Private **/
 
