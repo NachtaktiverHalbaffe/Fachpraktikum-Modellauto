@@ -11,7 +11,8 @@
 #define TIMERDRIVER_H_
 
 
-#include  <avr/io.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
 #include "GlobalDefinitions.h"
 
 

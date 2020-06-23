@@ -6,8 +6,9 @@
  */
 
 /****************************** include files ******************************************/
-#include  <avr/io.h>
-#include  "GlobalDefinitions.h"
+#include <avr/io.h>
+#include "GlobalDefinitions.h"
+#include "TimerDriver.h"
 
 
 /****************************** end of include ****************************************/
@@ -15,8 +16,7 @@
 
 
 /****************************** declaration of variables ******************************/
-long time=0;
-
+volatile long time=0;
 /****************************** end of variables **************************************/
 
 
@@ -33,9 +33,9 @@ void startTimer(void){
     OCR2B =0; // Output Compare Register B
 
     // set prescaler
-    TCCR2B |= (1<<CS22) | (1<<CS20);
+    TCCR2B |= (1<<CS22)| (1<<CS21) | (1<<CS20);
     //turn on CTC mode
-    TCCR2A |= (1 << WGM12)
+    TCCR2A |= (1 << WGM21)
     // enable timer compare interrupt
     TIMSK2 |= (1 << OCIE2A);
     // start serial connection for debugging
@@ -48,10 +48,8 @@ long getTime(void){
    return time;
 }
 
-ISR(TIMER2_COMPA_vect) {
-  serial.println(time);
+void ISR(TIMER2_COMPA_vect) {
   time= time+0.1;
-  serial.println(time);
 }
 
 
