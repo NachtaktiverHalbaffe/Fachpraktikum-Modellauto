@@ -16,6 +16,7 @@
 #include "TimerDriver.h"
 
 
+
 /********************************* Definitions ********************************/
 
 
@@ -44,10 +45,12 @@ float getVelocity(void);
 
 /*
  * unsigned int ReadSonic(unsigned char channel)
+ * 
+ * argument: if car is driving backwards that the collisiomncontrol uses the back sensor
  *
  * return: car is colliding (true) or not (false)
  */
-bool collisioncontrol(void);
+bool collisioncontrol(bool isDrivingBackwards);
 
 /** Private **/
 
