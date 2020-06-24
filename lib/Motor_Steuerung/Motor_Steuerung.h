@@ -32,7 +32,7 @@
 /*
  * void drive(void)
  *
- * initialize the drive function
+ * initialize the drive function. 
  */
 void Drive(void);
 

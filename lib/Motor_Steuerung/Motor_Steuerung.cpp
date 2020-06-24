@@ -51,6 +51,7 @@
    * 
    * The factor 1/2 is to get the values from GetRemoteSignal into the correct range of values for DriveForward/DriveReverse
    * 
+   * 
    * If GetDrivingDirection:
    *       0 = forward 
    *       1 = reverse
