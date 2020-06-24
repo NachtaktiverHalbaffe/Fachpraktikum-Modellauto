@@ -8,6 +8,9 @@
 /****************************** include files ******************************************/
 #include  <avr/io.h>
 #include  "GlobalDefinitions.h"
+#include  "KollisionsUeberwachung.h"
+#include "TimerDriver.h"
+#include "SonicDriver.h"
 
 /****************************** end of include ****************************************/
 
@@ -29,34 +32,34 @@ void KollisionsUeberwachungInit(void){
 
 
 float getVelocity(void){
-if(TimerDriver.getTime()==0){
-    TimerDriver.startTimer();
+if(getTime()==0){
+    startTimer();
     // Determing that front sonic isnt out of range, otherwise using back sensor
-    if(SonicDriver.ReadSonic(1)<510){
+    if(ReadSonic(1)<510){
     // Storing actual distance in Helper for future iterations
-       mD= SonicDriver.ReadSonic(0)/100; 
-    } else mD= SonicDriver.ReadSonic(1)/100;
+       mD= ReadSonic(0)/100; 
+    } else mD= ReadSonic(1)/100;
     return velocity;
 } else{
     if(mT != 0){
         // Determing that front sonic isnt out of range, otherwise using back sensor
-        if(SonicDriver.ReadSonic(1)<510){
+        if(ReadSonic(1)<510){
             // Storing actual distance in Helper for future iterations
-            mD= SonicDriver.ReadSonic(0)/100; 
-        } else mD= SonicDriver.ReadSonic(1)/100;
+            mD= ReadSonic(0)/100; 
+        } else mD= ReadSonic(1)/100;
         // Storing actual time in Helper for future iterations
-        mT= TimerDriver.getTime()/1000;
+        mT= getTime()/1000;
         return velocity;
     } else{
         //calculating the time since last measurement and storing afterwards new actual time in helper for next iteration 
-        long delta_time = TimerDriver.getTime() - mT;
-        mT = TimerDriver.getTime();
+        long delta_time = getTime() - mT;
+        mT = getTime();
         int delta_distance = 0;
         // Determing that front sonic isnt out of range, otherwise using back sensor
-        if(SonicDriver.ReadSonic(1)<510){
+        if(ReadSonic(1)<510){
             // Calculating driven distance since last measurement and storing actual distance in helper for next iteration
-            delta_distance = SonicDriver.ReadSonic(0)/100 - mD; 
-        } else delta_distance = SonicDriver.ReadSonic(1)/100 -mD;
+            delta_distance = ReadSonic(0)/100 - mD; 
+        } else delta_distance = ReadSonic(1)/100 -mD;
         // calculating velocity and returning it
         velocity = delta_distance/delta_time;
         return velocity;
@@ -69,10 +72,10 @@ bool collisioncontrol(bool isDrivingBackwards){
 int distance = 0;
 // get Distance from Sensor (in m)
 if(isDrivingBackwards){
- distance= SonicDriver.ReadSonic(0)/100;
-} else distance= SonicDriver.ReadSonic(1)/100;
+ distance= ReadSonic(0)/100;
+} else distance= ReadSonic(1)/100;
 //get Velocity
-velocity = getVelocity(isDrivingBackwards);
+velocity = getVelocity();
 
 /* Deciding if a collision is coming depending on current velocity and distance 
  * assuming  acceleration is 2 m/s^2 und t(time) to react 100ms
