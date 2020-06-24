@@ -17,9 +17,8 @@
 
 /****************************** include files ******************************************/
 
-#include	"GlobalDefinitions.h"
+#include    <avr/io.h>
 #include	"HupenSteuerung.h"
-#include    "RemoteControlDriver.h"
 
 /****************************** end of include ****************************************/
 
@@ -56,8 +55,12 @@ void HupenSteuerungInit(void){
  * params: bool doHonking is 0 or 1:
  * 0 -> don't honk
  * 1 -> honk
+ * 
+ * works with GetRemoteSignal(Horn_Status) to get the right offer for honk/not honk
  */
-void Honk(bool doHonking){
+void Honk(void){
+    static bool doHonking;
+    doHonking = GetRemoteSignal(HORN_STATUS);
     if (doHonking){
         PORTD |= (1 << HONK_PIN);
     }

@@ -13,6 +13,7 @@
 
 #include  <avr/io.h>
 #include "GlobalDefinitions.h"
+#include "RemoteControlDriver.h"
 
 
 /********************************* Definitions ********************************/
@@ -33,7 +34,7 @@ void HupenSteuerungInit(void);
 
 /** Public **/
 
-void Honk(bool doHonking);
+void Honk(void);
 
 /** Private **/
 
