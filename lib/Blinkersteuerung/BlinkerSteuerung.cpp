@@ -8,6 +8,7 @@
 /****************************** include files ******************************************/
 #include  <avr/io.h>
 #include  "GlobalDefinitions.h"
+#include "BlinkerSteuerung.h"
 
 
 /****************************** end of include ****************************************/
@@ -15,37 +16,41 @@
 
 
 /****************************** declaration of variables ******************************/
-int mT=0; // Helper for buffering Timer if Timer is already running and the timervalue has to be stored
+int mTB=0; // Helper for buffering Timer if Timer is already running and the timervalue has to be stored
 bool isBlinking =false; //Helper to see if it already blinks
 /****************************** end of variables **************************************/
 
 
 
 /****************************** implementation of functions ***************************/
+void BlinkerSteuerungInit(void){
+    DDRB |= (1 << BLINKER_RECHTS) | (1<< BLINKER_LINKS);
+}
+
 void blink(void){
-    if(RemoteDriver.getSteeringDirection()<2){
+    if(GetSteeringDirection()<2) {
         // Checking if timer is already running
-        if(TimerDriver.getTime()==0){
+        if(getTime()==0){
             //timer not running, starting timer and setting blink
-            TimerDriver.startTimer();
+            startTimer();
             setBlinkingDirection();
         } else{
             //checking if a time is already stored in helper
-            if(mT==0){
-                mT = TimerDriver.getTime();
+            if(mTB==0){
+                mTB = getTime();
                 setBlinkingDirection();
             } else {
                 //check if blinking time is exceeded
-                if(long delta_time = TimerDriver.getTime() - mT > BLINK_TIME){
+                if(getTime() - mTB > BLINK_TIME){
                     //check if its blinking or off
                     if(isBlinking){
                         //is Blinking, turning off
                         turnBlinkerOff();
-                        mT= TimerDriver.getTime()
+                        mTB= getTime();
                     } else {
                         //isnt blinking, turning blink on
                         setBlinkingDirection();
-                        mT= TimerDriver.getTime()
+                        mTB= getTime();
                     }
                 }
             }
@@ -59,9 +64,9 @@ void blink(void){
 }
 
 void setBlinkingDirection(void){
-if(RemoteDriver.getSteeringDirection()==0){
+if( GetSteeringDirection() ==0){
     PORTB |= (1<<BLINKER_LINKS);
-} else PORTB |= (1<<BLINKER_RECHTS);
+    } else PORTB |= (1<<BLINKER_RECHTS);
 }
 
 void turnBlinkerOff(void){
