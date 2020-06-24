@@ -1,5 +1,6 @@
 /*  Fahrlichtsteuerung.h
 *   1.0 2020-06-22
+*   1.1 2020-06-24
 *
 *   the header for the driving light control system
 *
@@ -11,7 +12,6 @@
 #define FAHRLICHTSTEUERUNG_H_
 
 
-#include <avr/io.h>
 #include "GlobalDefinitions.h"
 
 
@@ -19,6 +19,8 @@
 
 
 /**************************************** Methods **************************************************************************/
+
+void lightControlInit (void);
 
 void backwardslight (bool isDrivingBackwards);
 
@@ -28,4 +30,4 @@ void brakelights (bool isBraking);
 
 
 
-#endif /* FARLICHTSTEUERUNG_H_ */
+#endif /* FAHRLICHTSTEUERUNG_H_ */

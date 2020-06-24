@@ -44,11 +44,11 @@ long getTime(void);
 /** Private **/
 
 /*
- * void ISR(TIMER2_COMPA_vect)
+ * ISR(TIMER2_COMPA_vect)
  *
  * function to be executed on timer interrupt
  */
-void ISR(TIMER2_COMPA_vect);
+ISR(TIMER2_COMPA_vect);
 
 
 #endif /* TIMERDRIVER_H_ */
