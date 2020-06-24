@@ -25,10 +25,7 @@ void anzeige7seg( int akkuwert){
 
 /******************************************* implementation of functions ******************************************************/
 int akkuwert(double spannung){
-    /* The funktion calculets a battery value and rounds it off to a single digit.
-    The thresholds of a "spannung" value are approximated by the Date Sheet of a "Rechargeable Cylindrical cell Nickel Metal Hydride" battery.
-    */
-    nBaterien=4;
+    nBaterien=4; // number of Battery cells
  if(spannung < (1,5*nBaterien)){
      if(spannung >(1,31*nBaterien)) {
          Serial.println("9");

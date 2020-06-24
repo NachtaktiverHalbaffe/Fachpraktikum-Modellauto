@@ -22,9 +22,5 @@ void loop() {
   Drive();
   Steer();
   Honk();
- 
-
-
-  
 
   }
