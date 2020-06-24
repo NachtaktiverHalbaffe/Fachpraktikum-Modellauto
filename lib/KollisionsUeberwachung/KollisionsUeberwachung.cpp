@@ -25,11 +25,6 @@ float velocity = 0.0;
 
 
 /****************************** implementation of functions ***************************/
-void KollisionsUeberwachungInit(void){
-
-}
-
-
 float getVelocity(void){
 if(getTime()==0){
     startTimer();
@@ -81,7 +76,7 @@ velocity = getVelocity();
  *  distance = 0.5 * acceleration * t^2 +v *t = 0,01 + v *0,1
  *  => collision is coming when distance <= 0,01 +  velocity * 0,1  
  */
-if( distance <= 0,01 + velocity * 0,1 ){
+if( distance <= (0.01 + velocity * 0.1) ){
  return true;
 } else return false;
 

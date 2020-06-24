@@ -26,13 +26,6 @@
 
 /* Component management */
 
-/*
- * void KollisionsUeberwachungInit(void)
- *
- * initialize the component
- */
-void KollisionsUeberwachungInit(void);
-
 /** Public **/
 
 

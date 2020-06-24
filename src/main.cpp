@@ -7,6 +7,8 @@
 #include  <avr/io.h>
 #include  "HupenSteuerung.h"
 #include  "Motor_Steuerung.h"
+#include  "KollisionsUeberwachung.h"
+#include  "BlinkerSteuerung.h"
 
 void setup() {
   HupenSteuerungInit();
@@ -14,6 +16,7 @@ void setup() {
   RemotePinInit();
   ServoInit();
   SonicPinInit();
+  BlinkerSteuerungInit();
   Serial.begin(9600);
 }
 
@@ -21,6 +24,7 @@ void loop() {
 
   Drive();
   Steer();
+  blink();
   Honk();
 
   }
