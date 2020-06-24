@@ -38,7 +38,7 @@ void startTimer(void);
  *
  * return: current time of timer 2
  */
-float getTime(void);
+long getTime(void);
 
 
 /** Private **/

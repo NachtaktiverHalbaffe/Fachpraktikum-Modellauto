@@ -16,7 +16,7 @@
 /****************************** declaration of variables ******************************/
 float mT=0; //Helper to store a current Time of an timer
 int mD=0; //Helper to store a current Distance
-const float threshHold= 0.5;
+float velocity = 0.0;
 
 /****************************** end of variables **************************************/
 
@@ -24,20 +24,49 @@ const float threshHold= 0.5;
 
 /****************************** implementation of functions ***************************/
 void KollisionsUeberwachungInit(void){
-    TCCR1A = 0;
-    TCCR1B = 0;
-    TCCR1B |= (1<<CS10); //prescaler 1
-    TIMSK1 |=(1<<TOIE1); // enable timer overflow
+
 }
 
 
 float getVelocity(bool isDrivingBackwards){
+if(TimerDriver.getTime()==0){
+    TimerDriver.startTimer();
+    // Determing which Sonic sensor has shorter distance measured
+    if(SonicDriver.ReadSonic(0)<SonicDriver.ReadSonic(1)){
+    // Storing actual distance in Helper for future iterations
+       mD= SonicDriver.ReadSonic(0)/100; 
+    } else mD= SonicDriver.ReadSonic(1)/100;
+    return velocity;
+} else{
+    if(mT != 0){
+        // Determing which Sonic sensor has shorter distance measured
+        if(SonicDriver.ReadSonic(0)<SonicDriver.ReadSonic(1)){
+            // Storing actual distance in Helper for future iterations
+            mD= SonicDriver.ReadSonic(0)/100; 
+        } else mD= SonicDriver.ReadSonic(1)/100;
+        // Storing actual time in Helper for future iterations
+        mT= TimerDriver.getTime()/1000;
+        return velocity;
+    } else{
+        //calculating the time since last measurement and storing afterwards new actual time in helper for next iteration 
+        long delta_time = TimerDriver.getTime() - mT;
+        mT = TimerDriver.getTime();
+        int delta_distance = 0;
+        // Determing which Sonic sensor has shorter distance measured
+        if(SonicDriver.ReadSonic(0)<SonicDriver.ReadSonic(1)){
+            // Calculating driven distance since last measurement and storing actual distance in helper for next iteration
+            delta_distance = SonicDriver.ReadSonic(0)/100 - mD; 
+        } else delta_distance = SonicDriver.ReadSonic(1)/100 -mD;
+        // calculating velocity and returning it
+        velocity = delta_distance/delta_time;
+        return velocity;
+    }
+}
 
 }
 
 bool collisioncontrol(bool isDrivingBackwards){
 int distance = 0;
-float velocity = 0.0;
 
 // get Distance from Sensor (in m)
 if(isDrivingBackwards){
