@@ -51,21 +51,22 @@
    * 
    * The factor 1/2 is to get the values from GetRemoteSignal into the correct range of values for DriveForward/DriveReverse
    * 
-   * 
-   * If GetDrivingDirection:
-   *       0 = forward 
-   *       1 = reverse
-   *       2 = stand
-   * 
    * collisioncontrol needs a bool-param. -> 
    *        true:   driving backwards
    *        false:  driving forwards
-   * if collisioncontrol is true, car is going to collide. 
-   *        Case true:  
-   *            if forwards -> driveReverse 100% until car stands still
-   *            if backwards -> driveForward 100% until car stands still
-   *        case false:
-   *            driveforwards or backwards with driving_direction_main 
+   * 
+   * get actual velocity with getVelocity()
+   * 
+   * 5 if-cases: 
+   * 
+   *    1. velocity < 0 & collisioncontrol == true
+   *    2. velocity >= 0 & collisioncontrol == true
+   *    3. GetDrivingDirection == 0 (forward)
+   *    4. GetDrivingDirection == 1 (reverse)
+   *    5. GetDrivingDirection == 2 (stand)
+   * 
+   * the Do's are written above every if-case
+   * 
    */
 
   void Drive(void){
@@ -119,6 +120,7 @@
    * -> 150-30= 120 -> 1023/120 ≈ 8,5 -> dividing the GetRemoteSignal with 8.5 to get a Value between about 0 and 120
    * add 30 to get a Value-Range from 30 to 150
    * 
+   * give the Value to SetSteering so the steer goes into the right position
   */
   void Steer(void){
 
