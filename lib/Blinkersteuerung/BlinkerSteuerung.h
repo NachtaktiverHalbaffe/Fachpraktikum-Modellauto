@@ -13,11 +13,13 @@
 
 #include  <avr/io.h>
 #include "GlobalDefinitions.h"
+#include "TimerDriver.h"
 
 
 /********************************* Definitions ********************************/
-
-
+#define BLINKER_RECHTS 0 // PORTB0
+#define BLINKER_LINKS 3 // PORTB3
+#define BLINK_TIME 0.5 // Time in seconds how long is one blink
 
 /*********************************** Methods **********************************/
 
@@ -33,7 +35,7 @@ void BlinkerSteuerungInit(void);
 /** Public **/
 
 /*
- * unsigned int blink(bool isBlinking)
+ * void blink(bool isBlinking)
  *
  * params: bool that says that the car is steering and the car has to blink 
  *  
@@ -41,6 +43,22 @@ void BlinkerSteuerungInit(void);
 void blink(bool isBlinking);
 
 /** Private **/
+
+/*
+ * void setBlinkingDirection(void)
+ *
+ * sets blinking on right or left side depending on steering direction
+ * 
+ */
+void setBlinkingDirection(void);
+
+/*
+ * void blink(bool isBlinking)
+ *
+ * turns off all blinker
+ * 
+ */
+void turnBlinkerOff(void);
 
 
 #endif /* BLINKERSTEUERUNG_H_ */
