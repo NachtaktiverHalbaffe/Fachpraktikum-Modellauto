@@ -4,9 +4,9 @@
             "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
         },
         {
-            "name": "Mac",
-            "macFrameworkPath": [],
+            "name": "Win32",
             "includePath": [
+<<<<<<< HEAD
                 "/Users/rouvenrischert/Documents/GitHub/Fachpraktikum_Modellauto/lib/HupenSteuerung",
                 "/Users/rouvenrischert/Documents/GitHub/Fachpraktikum_Modellauto/lib/KollisionsUeberwachung",
                 "/Users/rouvenrischert/Documents/GitHub/Fachpraktikum_Modellauto/lib/Motor_Steuerung",
@@ -30,11 +30,37 @@
                 "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/variants/standard",
                 "/Users/rouvenrischert/.platformio/packages/tool-unity",
+=======
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/include",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/src",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Motor_Steuerung",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/ServoDriver",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/KollisionsUeberwachung",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/TimerDriver",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/SonicDriver",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Motordriver",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/HupenSteuerung",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/RemoteDriver",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/.pio/libdeps/uno/Servo_ID883/src",
+                "C:/Users/ilya/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/ilya/.platformio/packages/framework-arduino-avr/variants/standard",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/AkkuAnzeige",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Blinkersteuerung",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Fahrlichtsteuerung",
+                "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Fernsteuerung",
+                "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "C:/Users/ilya/.platformio/packages/tool-unity",
+>>>>>>> cd4ce7be8d60f4003c7d6af4647c573335852b6f
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
+<<<<<<< HEAD
                     "/Users/rouvenrischert/Documents/GitHub/Fachpraktikum_Modellauto/lib/HupenSteuerung",
                     "/Users/rouvenrischert/Documents/GitHub/Fachpraktikum_Modellauto/lib/KollisionsUeberwachung",
                     "/Users/rouvenrischert/Documents/GitHub/Fachpraktikum_Modellauto/lib/Motor_Steuerung",
@@ -58,6 +84,31 @@
                     "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/variants/standard",
                     "/Users/rouvenrischert/.platformio/packages/tool-unity",
+=======
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/include",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/src",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Motor_Steuerung",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/ServoDriver",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/KollisionsUeberwachung",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/TimerDriver",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/SonicDriver",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Motordriver",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/HupenSteuerung",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/RemoteDriver",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/.pio/libdeps/uno/Servo_ID883/src",
+                    "C:/Users/ilya/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/ilya/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/AkkuAnzeige",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Blinkersteuerung",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Fahrlichtsteuerung",
+                    "c:/Users/ilya/Documents/GitHub/Fachpraktikum_Modellauto/lib/Fernsteuerung",
+                    "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/ilya/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/Users/ilya/.platformio/packages/tool-unity",
+>>>>>>> cd4ce7be8d60f4003c7d6af4647c573335852b6f
                     ""
                 ]
             },
@@ -73,7 +124,7 @@
             "intelliSenseMode": "clang-x64",
             "cStandard": "c11",
             "cppStandard": "c++11",
-            "compilerPath": "/Users/rouvenrischert/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerPath": "C:/Users/ilya/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
             "compilerArgs": [
                 "-mmcu=atmega328p",
                 ""
