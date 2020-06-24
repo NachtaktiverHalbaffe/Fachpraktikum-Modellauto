@@ -9,8 +9,7 @@
 #include  <avr/io.h>
 #include  "GlobalDefinitions.h"
 #include  "KollisionsUeberwachung.h"
-#include "TimerDriver.h"
-#include "SonicDriver.h"
+
 
 /****************************** end of include ****************************************/
 
@@ -82,7 +81,7 @@ velocity = getVelocity();
  *  distance = 0.5 * acceleration * t^2 +v *t = 0,01 + v *0,1
  *  => collision is coming when distance <= 0,01 +  velocity * 0,1  
  */
-if( distance <= 0,01 + velocity * 0,1 ){
+if( distance =< 0,01 + velocity * 0,1 ){
  return true;
 } else return false;
 
