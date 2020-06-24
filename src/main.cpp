@@ -14,6 +14,7 @@ void setup() {
   RemotePinInit();
   ServoInit();
   SonicPinInit();
+  Serial.begin(9600);
 }
 
 void loop() {

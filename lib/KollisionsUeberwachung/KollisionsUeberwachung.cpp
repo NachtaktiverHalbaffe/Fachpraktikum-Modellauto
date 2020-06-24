@@ -70,16 +70,16 @@ int distance = 0;
 // get Distance from Sensor (in m)
 if(isDrivingBackwards){
  distance= SonicDriver.ReadSonic(0)/100;
-} else distance= SonicDriver.ReadSonic(1);
+} else distance= SonicDriver.ReadSonic(1)/100;
 //get Velocity
 velocity = getVelocity(isDrivingBackwards);
 
 /* Deciding if a collision is coming depending on current velocity and distance 
- * assuming  acceleration is 4 m/s^2 und t(time) to react 100ms
- *  s=0.5 * acceleration  t^2 +v *t = 0,02 + v *0,1
- *  => collision is coming when distance <= 0,02 +  velocity * 0,1  
+ * assuming  acceleration is 2 m/s^2 und t(time) to react 100ms
+ *  distance = 0.5 * acceleration * t^2 +v *t = 0,01 + v *0,1
+ *  => collision is coming when distance <= 0,01 +  velocity * 0,1  
  */
-if( distance <= 0,02 + velocity * 0,1 ){
+if( distance <= 0,01 + velocity * 0,1 ){
  return true;
 } else return false;
 
