@@ -1,5 +1,5 @@
 /*  HupenSteuerung.c
- *	1.0, 2020-05-17
+ *	1.0, 2020-06-17
  *	    
  *
  *      controls the honk:
@@ -12,7 +12,7 @@
  *		
  *
  *	(C) 2020 IAS, Universitaet Stuttgart
- *	Author: Alexander Laichinger
+ *	Author: Rouven Rischert
  */
 
 /****************************** include files ******************************************/
