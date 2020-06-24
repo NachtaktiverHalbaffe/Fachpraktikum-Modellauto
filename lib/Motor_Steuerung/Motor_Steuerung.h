@@ -34,7 +34,7 @@
  *
  * initialize the drive function
  */
-void drive(void);
+void Drive(void);
 
 
 /*
@@ -42,7 +42,7 @@ void drive(void);
  *
  * initialize the steer function
  */
-void steer(void);
+void Steer(void);
 
 
 /** Private **/

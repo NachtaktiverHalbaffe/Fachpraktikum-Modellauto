@@ -67,43 +67,43 @@
    *            driveforwards or backwards with driving_direction_main 
    */
 
-  void drive(void){
+  void Drive(void){
     static int driving_direction_main;
     driving_direction_main = GetRemoteSignal(DRIVING_DIRECTION)/2;
 
-    //Forward
-    if          (GetDrivingDirection()==0){
-        if(collisioncontrol(false)){
-            while (getVelocity > 0){
-                DriveReverse(PWM_MAX_REVERSE);
-            }
-            MotorIdle();
+    
+    static int velocity = getVelocity();
+
+    //if car is driving backwards, and collisioncontrol is true -> accelerate forwards until velocity > 0, then go to Idle
+    if ((velocity < 0) and collisioncontrol(true)){
+        while (getVelocity() < 0){
+            DriveForward(PWM_MAX_FORWARD);
         }
-        else {
-            DriveForward(driving_direction_main);
-        }
+        MotorIdle();
     }
-    //Reverse
-    else if     (GetDrivingDirection()==1){
-        if (collisioncontrol(true)){
-            while (getVelocity < 0){
-                DriveForward(PWM_MAX_FORWARD);
-            }
-            MotorIdle();
+
+    //if car is driving forwards, and collisioncontrol is true -> accelerate backwards until velocity < 0, then go to Idle
+    else if ((velocity >= 0) and collisioncontrol(false)){
+        while (getVelocity() > 0){
+            DriveForward(PWM_MAX_REVERSE);
         }
-        else {
-            DriveReverse(driving_direction_main);
-        }
+        MotorIdle();
     }
-    //Stand
-    else if     (GetDrivingDirection()==2){
+
+    //if Remote gives Signal to drive forward -> drive forward with Input-Speed
+    else if (GetDrivingDirection()==0){
+        DriveForward(driving_direction_main);
+    }
+
+    //if Remote gives Signal to drive backward -> drive backward with Input-Speed
+    else if (GetDrivingDirection()==1){
+        DriveReverse(driving_direction_main);
+    }
+    //if Remote gives Signal to stand -> go to idle
+    else if (GetDrivingDirection()==2){
         MotorIdle();
     }
   }
-
-
-
-
 
 /*
    * STEERING
@@ -119,7 +119,7 @@
    * add 30 to get a Value-Range from 30 to 150
    * 
   */
-  void steer(void){
+  void Steer(void){
 
     static int steering_direction_main;
     steering_direction_main = GetRemoteSignal(DRIVING_DIRECTION);
