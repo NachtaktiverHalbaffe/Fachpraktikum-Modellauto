@@ -9,8 +9,7 @@
 #include  <avr/io.h>
 #include  "GlobalDefinitions.h"
 #include  "KollisionsUeberwachung.h"
-#include "TimerDriver.h"
-#include "SonicDriver.h"
+
 
 /****************************** end of include ****************************************/
 

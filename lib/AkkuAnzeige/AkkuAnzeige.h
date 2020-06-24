@@ -14,7 +14,19 @@
 
 
 /**************************************** Definitions **********************************************************************/
+ /* The funktion calculets a battery value
+ gives out a value between 0 and 9
+ * 
+ * params:
+ * 
+ * return:
+ */
 int akkuwert(int spannung);
+
+/* The funktion calculets a battery value and rounds it off to a single digit. 
+
+params:
+*/
 void anzeige7seg( int akkuwert);
 
 /**************************************** Methods **************************************************************************/
