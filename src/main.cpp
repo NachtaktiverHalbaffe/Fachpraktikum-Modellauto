@@ -18,17 +18,10 @@ void setup() {
 }
 
 void loop() {
-  /*
-   * HONK
-   * 
-   * ask for HORN_STATUS and in Case activate honk or not by using Honk-Function
-  */
-  static bool doHonk;
-  doHonk = GetRemoteSignal(HORN_STATUS);
-  Honk(doHonk);
-  
-  drive();
-  steer();
+
+  Drive();
+  Steer();
+  Honk();
  
 
 
