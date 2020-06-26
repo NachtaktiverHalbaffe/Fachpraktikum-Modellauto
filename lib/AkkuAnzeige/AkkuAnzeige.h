@@ -14,20 +14,26 @@
 
 
 /**************************************** Definitions **********************************************************************/
- /* The funktion calculets a battery value
- gives out a value between 0 and 9
+
+#define DDRD
+ /* The funktion calculets a battery value and rounds it off to a single digit. 
  * 
- * params:
+ * params: voltage of the accumulator
  * 
- * return:
+ * return: int value between 0 and 9
  */
 int akkuwert(int spannung);
 
-/* The funktion calculets a battery value and rounds it off to a single digit. 
 
-params:
+/* The funktion assigns a number between 0 and 9 to an affiliated 7 segment port.
+*    
+* params: int value between 0 and 9
+*
+* return: void
 */
-void anzeige7seg( int akkuwert);
+void anzeige7seg( int akkuwert){
+    DDRD= {0B 0     0	0 	0 	0 	0 	0  0}
+}
 
 /**************************************** Methods **************************************************************************/
 
