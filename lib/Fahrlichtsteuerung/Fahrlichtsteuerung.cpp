@@ -69,7 +69,8 @@ void backwardslight (bool isDrivingBackwards){
 
 /******************************************* implementation of functions ******************************************************/
 
-
+ static bool doHonking;
+    doHonking = GetRemoteSignal(HORN_STATUS);
 
 
 /******************************************* end of implementation ************************************************************/

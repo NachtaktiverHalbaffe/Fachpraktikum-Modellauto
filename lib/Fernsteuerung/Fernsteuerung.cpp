@@ -7,7 +7,7 @@
 
 /******************************************* include files ********************************************************************/
 
-#include <avr/io.h>
+#include "RemoteControlDriver.h"
 #include "GlobalDefinitions.h"
 
 /******************************************* end of include *******************************************************************/
@@ -31,7 +31,15 @@
 
 /******************************************* implementation of functions ******************************************************/
 
+bool getBraking(void){
+    int velocityHelper = 0;
+    velocityHelper = KollisionsUeberachung.getVelocity();
+    if(velocityHelper >= 0 && GetRemoteSignal(DRIVING_DIRECTION)){ // Driving Direction auswerten
 
+
+    }
+    
+}
 
 
 /******************************************* end of implementation ************************************************************/
