@@ -14,6 +14,7 @@
 #include  <avr/io.h>
 #include "GlobalDefinitions.h"
 #include "TimerDriver.h"
+#include "RemoteControlDriver.h"
 
 
 /********************************* Definitions ********************************/
@@ -40,7 +41,7 @@ void BlinkerSteuerungInit(void);
  * params: bool that says that the car is steering and the car has to blink 
  *  
  */
-void blink(bool isBlinking);
+void blink(void);
 
 /** Private **/
 
