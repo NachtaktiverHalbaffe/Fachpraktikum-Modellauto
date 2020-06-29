@@ -19,7 +19,7 @@ void setup() {
   SonicPinInit();
   BlinkerSteuerungInit();
   lightControlInit();
-  Serial.begin(9600);
+  Serial.begin(2400);
   startTimer();
 }
 
