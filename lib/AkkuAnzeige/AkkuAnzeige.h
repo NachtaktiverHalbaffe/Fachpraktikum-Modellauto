@@ -8,7 +8,6 @@
 #ifndef AKKUANZEIGE_H_
 #define AKKUANZEIGE_H_
 
-
 #include <avr/io.h>
 #include "GlobalDefinitions.h"
 
@@ -31,9 +30,7 @@ int akkuwert(int spannung);
 *
 * return: void
 */
-void anzeige7seg( int akkuwert){
-    DDRD= {0B 0     0	0 	0 	0 	0 	0  0}
-}
+void anzeige7seg( int akkuwert):
 
 /**************************************** Methods **************************************************************************/
 
