@@ -34,6 +34,11 @@ void HupenSteuerungInit(void);
 
 /** Public **/
 
+/*
+ *
+ * Makes the car Honk if the remote control gives the command to honk
+*/
+
 void Honk(void);
 
 /** Private **/
