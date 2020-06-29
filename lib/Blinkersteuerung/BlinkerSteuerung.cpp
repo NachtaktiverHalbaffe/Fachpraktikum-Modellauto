@@ -16,8 +16,9 @@
 
 
 /****************************** declaration of variables ******************************/
-int mTB=0; // Helper for buffering Timer if Timer is already running and the timervalue has to be stored
+float mTB=0; // Helper for buffering Timer if Timer is already running and the timervalue has to be stored
 bool isBlinking =false; //Helper to see if it already blinks
+const float BLINK_TIME = 0.7;
 /****************************** end of variables **************************************/
 
 
@@ -30,58 +31,52 @@ void BlinkerSteuerungInit(void){
 void blink(void){
     if(GetSteeringDirection()<2) {
         // Checking if timer is already running
-        Serial.println("Blinking on");
-        Serial.println(getTime());
-        if(getTime()==0){
-            //timer not running, starting timer and setting blink
-            Serial.println("Timer started");
-            startTimer();
-            setBlinkingDirection();
-        } else{
             //checking if a time is already stored in helper
             if(mTB==0){
                 Serial.println("No Buffered Time stored");
                 mTB = getTime();
                 setBlinkingDirection();
+                isBlinking=true;
             } else {
                 //check if blinking time is exceeded
+                Serial.println(getTime() - mTB);
                 if(getTime() - mTB > BLINK_TIME){
                     //check if its blinking or off
                     if(isBlinking){
                         //is Blinking, turning off
                         turnBlinkerOff();
                         mTB= getTime();
-                        Serial.println("Blink");
-                        Serial.println(mTB);
                     } else {
                         //isnt blinking, turning blink on
                         setBlinkingDirection();
-                        Serial.println("Blink");
                         mTB= getTime();
-                        Serial.println(mTB);
                     }
                 }
             }
-        }
-
     } else{
-        
-        Serial.println("Blinking off");
+        //car isnt steering, turning evrything off
          turnBlinkerOff();
-         isBlinking=false;
-        
+         isBlinking=false;    
     }
 }
 
 void setBlinkingDirection(void){
-if( GetSteeringDirection() == 0){
+    isBlinking = true;
+    //set Blink-LEDs on according to steering direction 
+    if( GetSteeringDirection() == 0){
     PORTB |= (1<<BLINKER_LINKS);
-    } else PORTB |= (1<<BLINKER_RECHTS);
+    PORTB &= ~(1 << BLINKER_RECHTS);
+    } else{
+        PORTB |= (1<<BLINKER_RECHTS);
+        PORTB &= ~(1 << BLINKER_LINKS);
+    } 
 }
 
 void turnBlinkerOff(void){
+    //turn all blinker off
     PORTB &= ~(1 << BLINKER_RECHTS);
     PORTB &= ~(1 << BLINKER_LINKS);
+    isBlinking=false;
 }
 
 /***************************** end of implementation **********************************/

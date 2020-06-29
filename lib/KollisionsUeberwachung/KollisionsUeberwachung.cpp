@@ -26,15 +26,6 @@ float velocity = 0.0;
 
 /****************************** implementation of functions ***************************/
 float getVelocity(void){
-if(getTime()==0){
-    startTimer();
-    // Determing that front sonic isnt out of range, otherwise using back sensor
-    if(ReadSonic(1)<510){
-    // Storing actual distance in Helper for future iterations
-       mD= ReadSonic(0)/100; 
-    } else mD= ReadSonic(1)/100;
-    return velocity;
-} else{
     if(mT != 0){
         // Determing that front sonic isnt out of range, otherwise using back sensor
         if(ReadSonic(1)<510){
@@ -56,9 +47,11 @@ if(getTime()==0){
         } else delta_distance = ReadSonic(1)/100 -mD;
         // calculating velocity and returning it
         velocity = delta_distance/delta_time;
+        Serial.println("Velocity: ");
+        Serial.print(velocity);
         return velocity;
     }
-}
+
 
 }
 

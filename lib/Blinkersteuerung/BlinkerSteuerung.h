@@ -20,7 +20,6 @@
 /********************************* Definitions ********************************/
 #define BLINKER_RECHTS 0 // PORTB0
 #define BLINKER_LINKS 3 // PORTB3
-#define BLINK_TIME 0.5 // Time in seconds how long is one blink
 
 /*********************************** Methods **********************************/
 
