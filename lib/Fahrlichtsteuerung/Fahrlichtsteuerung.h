@@ -11,9 +11,10 @@
 #ifndef FAHRLICHTSTEUERUNG_H_
 #define FAHRLICHTSTEUERUNG_H_
 
-
+#include <avr/io.h>
 #include "GlobalDefinitions.h"
-
+#include "RemoteControlDriver.h"
+#include "KollisionsUeberwachung.h"
 
 /**************************************** Definitions **********************************************************************/
 
@@ -22,12 +23,11 @@
 
 void lightControlInit (void);
 
-void backwardslight (bool isDrivingBackwards);
+void drivinglights (void);
 
-void drivinglights (bool isDark, bool inAutomaticOperation, bool lightManualOn);
+void brakelights (void);
 
-void brakelights (bool isBraking);
-
+void backwardslight (void);
 
 
 #endif /* FAHRLICHTSTEUERUNG_H_ */

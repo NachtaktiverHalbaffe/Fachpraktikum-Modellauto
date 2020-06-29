@@ -11,7 +11,7 @@
 #define FERNSTEUERUNG_H_
 
 
-#include <avr/io.h>
+#include "RemoteControlDriver.h"
 #include "GlobalDefinitions.h"
 
 
