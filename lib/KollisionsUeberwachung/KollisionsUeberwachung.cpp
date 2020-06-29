@@ -17,7 +17,7 @@
 
 /****************************** declaration of variables ******************************/
 float mT=0; //Helper to store a current Time of an timer
-int mD=0; //Helper to store a current Distance
+float mD=0; //Helper to store a current Distance
 float velocity = 0.0;
 
 /****************************** end of variables **************************************/
@@ -26,28 +26,34 @@ float velocity = 0.0;
 
 /****************************** implementation of functions ***************************/
 float getVelocity(void){
-    if(mT != 0){
+    if(mT == 0){
+        Serial.println("No buffered time");
         // Determing that front sonic isnt out of range, otherwise using back sensor
         if(ReadSonic(1)<510){
             // Storing actual distance in Helper for future iterations
             mD= ReadSonic(0)/100; 
         } else mD= ReadSonic(1)/100;
         // Storing actual time in Helper for future iterations
-        mT= getTime()/1000;
+        mT= getTime();
         return velocity;
     } else{
         //calculating the time since last measurement and storing afterwards new actual time in helper for next iteration 
-        long delta_time = getTime() - mT;
+        float delta_time = getTime() - mT;
         mT = getTime();
-        int delta_distance = 0;
+        float delta_distance = 0;
         // Determing that front sonic isnt out of range, otherwise using back sensor
-        if(ReadSonic(1)<510){
+        if(ReadSonic(0)<510){
             // Calculating driven distance since last measurement and storing actual distance in helper for next iteration
             delta_distance = ReadSonic(0)/100 - mD; 
-        } else delta_distance = ReadSonic(1)/100 -mD;
+            mD= ReadSonic(0)/100;
+        } else {
+            delta_distance = ReadSonic(1)/100 -mD;
+            mD= ReadSonic(1)/100;
+            }
         // calculating velocity and returning it
         velocity = delta_distance/delta_time;
-        Serial.println("Velocity: ");
+        Serial.println("");
+        Serial.print("Velocity: ");
         Serial.print(velocity);
         return velocity;
     }
@@ -70,6 +76,8 @@ velocity = getVelocity();
  *  => collision is coming when distance <= 0,01 +  velocity * 0,1  
  */
 if( distance <= (0.01 + velocity * 0.1) ){
+    Serial.println("");
+    Serial.println("Warning: Collision appearing");
  return true;
 } else return false;
 

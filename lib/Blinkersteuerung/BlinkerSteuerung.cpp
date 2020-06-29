@@ -39,7 +39,6 @@ void blink(void){
                 isBlinking=true;
             } else {
                 //check if blinking time is exceeded
-                Serial.println(getTime() - mTB);
                 if(getTime() - mTB > BLINK_TIME){
                     //check if its blinking or off
                     if(isBlinking){
