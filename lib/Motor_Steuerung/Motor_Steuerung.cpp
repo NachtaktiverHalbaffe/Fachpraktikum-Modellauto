@@ -74,10 +74,10 @@
     driving_direction_main = GetRemoteSignal(DRIVING_DIRECTION)/2;
 
     
-    static int velocity = getVelocity();
+    static int velocity_drive = getVelocity();
 
     //if car is driving backwards, and collisioncontrol is true -> accelerate forwards until velocity > 0, then go to Idle
-    if ((velocity < 0) and collisioncontrol(true)){
+    if ((velocity_drive < 0) and collisioncontrol(true)){
         while (getVelocity() < 0){
             DriveForward(PWM_MAX_FORWARD);
         }
@@ -85,7 +85,7 @@
     }
 
     //if car is driving forwards, and collisioncontrol is true -> accelerate backwards until velocity < 0, then go to Idle
-    else if ((velocity >= 0) and collisioncontrol(false)){
+    else if ((velocity_drive >= 0) and collisioncontrol(false)){
         while (getVelocity() > 0){
             DriveForward(PWM_MAX_REVERSE);
         }
@@ -123,14 +123,15 @@
    * give the Value to SetSteering so the steer goes into the right position
   */
   void Steer(void){
-
+    static int velocity_steer = getVelocity();
     static int steering_direction_main;
-    steering_direction_main = GetRemoteSignal(DRIVING_DIRECTION);
+    steering_direction_main = GetRemoteSignal(STEERING_DIRECTION);
     steering_direction_main = int(steering_direction_main/8.5)+30;
-    if (!(collisioncontrol(false) or collisioncontrol(true))){
+    if (((velocity_steer >= 0) and !collisioncontrol(false)) or ((velocity_steer < 0) and !collisioncontrol(true))){
         SetSteering(steering_direction_main);
     }
     else {
+        //gerade aus
         SetSteering(90);
     }
   }
