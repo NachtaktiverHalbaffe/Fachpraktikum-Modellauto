@@ -36,7 +36,7 @@ void HupenSteuerungInit(void);
 
 /*
  *
- * Makes the car Honk if the remote control gives the command to honk
+ * Makes the car Honk, if the remote control gives the command to honk
 */
 
 void Honk(void);
