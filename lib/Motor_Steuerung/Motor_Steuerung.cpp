@@ -125,9 +125,9 @@
   void Steer(void){
     static int velocity_steer = getVelocity();
     static int steering_direction_main;
-    steering_direction_main = GetRemoteSignal(DRIVING_DIRECTION);
+    steering_direction_main = GetRemoteSignal(STEERING_DIRECTION);
     steering_direction_main = int(steering_direction_main/8.5)+30;
-    if (((velocity_steer >= 0) and !collisioncontrol(false))or ((velocity_steer < 0) and !collisioncontrol(true))){
+    if (((velocity_steer >= 0) and !collisioncontrol(false)) or ((velocity_steer < 0) and !collisioncontrol(true))){
         SetSteering(steering_direction_main);
     }
     else {
