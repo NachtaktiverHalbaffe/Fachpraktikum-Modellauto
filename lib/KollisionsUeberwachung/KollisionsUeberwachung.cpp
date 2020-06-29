@@ -39,12 +39,16 @@ float getVelocity(void){
     } else{
         //calculating the time since last measurement and storing afterwards new actual time in helper for next iteration 
         float delta_time = getTime() - mT;
+        //exiting measurment if time period isnt biug enough
+        if(delta_time< 0.1){
+            return velocity;
+        }
         mT = getTime();
         float delta_distance = 0;
         // Determing that front sonic isnt out of range, otherwise using back sensor
         if(ReadSonic(0)<510){
             // Calculating driven distance since last measurement and storing actual distance in helper for next iteration
-            delta_distance = ReadSonic(0)/100 - mD; 
+            delta_distance = mD -ReadSonic(0)/100 ; 
             mD= ReadSonic(0)/100;
         } else {
             delta_distance = ReadSonic(1)/100 -mD;
@@ -62,7 +66,7 @@ float getVelocity(void){
 }
 
 bool collisioncontrol(bool isDrivingBackwards){
-int distance = 0;
+float distance = 0;
 // get Distance from Sensor (in m)
 if(isDrivingBackwards){
  distance= ReadSonic(0)/100;
@@ -75,6 +79,7 @@ velocity = getVelocity();
  *  distance = 0.5 * acceleration * t^2 +v *t = 0,01 + v *0,1
  *  => collision is coming when distance <= 0,01 +  velocity * 0,1  
  */
+
 if( distance <= (0.01 + velocity * 0.1) ){
     Serial.println("");
     Serial.println("Warning: Collision appearing");

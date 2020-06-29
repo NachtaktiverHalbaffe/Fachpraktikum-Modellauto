@@ -20,6 +20,7 @@ void setup() {
   BlinkerSteuerungInit();
   lightControlInit();
   Serial.begin(9600);
+  startTimer();
 }
 
 void loop() {
@@ -30,5 +31,4 @@ void loop() {
   drivinglights();
   brakelights();
   backwardslight();
-
   }
