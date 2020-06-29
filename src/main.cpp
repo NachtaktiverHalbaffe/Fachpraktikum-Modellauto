@@ -9,6 +9,7 @@
 #include  "Motor_Steuerung.h"
 #include  "KollisionsUeberwachung.h"
 #include  "BlinkerSteuerung.h"
+#include  "Fahrlichtsteuerung.h"
 
 void setup() {
   HupenSteuerungInit();
@@ -17,6 +18,7 @@ void setup() {
   ServoInit();
   SonicPinInit();
   BlinkerSteuerungInit();
+  lightControlInit();
   Serial.begin(9600);
 }
 
@@ -25,5 +27,8 @@ void loop() {
   Steer();
   blink();
   Honk();
+  drivinglights();
+  brakelights();
+  backwardslight();
 
   }
