@@ -12,6 +12,7 @@
 
 
 #include <avr/io.h>
+#include  "stdio.h"
 #include <avr/interrupt.h>
 #include "GlobalDefinitions.h"
 
@@ -48,7 +49,6 @@ long getTime(void);
  *
  * function to be executed on timer interrupt
  */
-ISR(TIMER2_COMPA_vect);
 
 
 #endif /* TIMERDRIVER_H_ */

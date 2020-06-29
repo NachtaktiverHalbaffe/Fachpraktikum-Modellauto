@@ -7,6 +7,7 @@
 
 /****************************** include files ******************************************/
 #include <avr/io.h>
+#include  "stdio.h"
 #include "GlobalDefinitions.h"
 #include "TimerDriver.h"
 #include <avr/interrupt.h>
@@ -27,7 +28,6 @@ void startTimer(void){
     cli(); // stop Interrupts
 
     // All declarations ar for Timer 2
-    time=0;
     TCCR2A = 0;  //Resetting Timer/Counter Control Register A 
     TCCR2B = 0;  //Resetting Timer/Counter Control Register B
     TCNT2 = 0; //Timercount 
@@ -50,6 +50,7 @@ long getTime(void){
 
 ISR(TIMER2_COMPA_vect) {
   time= time+0.01;
+
 }
 
 

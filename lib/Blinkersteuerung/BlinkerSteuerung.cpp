@@ -30,13 +30,17 @@ void BlinkerSteuerungInit(void){
 void blink(void){
     if(GetSteeringDirection()<2) {
         // Checking if timer is already running
+        Serial.println("Blinking on");
+        Serial.println(getTime());
         if(getTime()==0){
             //timer not running, starting timer and setting blink
+            Serial.println("Timer started");
             startTimer();
             setBlinkingDirection();
         } else{
             //checking if a time is already stored in helper
             if(mTB==0){
+                Serial.println("No Buffered Time stored");
                 mTB = getTime();
                 setBlinkingDirection();
             } else {
@@ -47,24 +51,30 @@ void blink(void){
                         //is Blinking, turning off
                         turnBlinkerOff();
                         mTB= getTime();
+                        Serial.println("Blink");
+                        Serial.println(mTB);
                     } else {
                         //isnt blinking, turning blink on
                         setBlinkingDirection();
+                        Serial.println("Blink");
                         mTB= getTime();
+                        Serial.println(mTB);
                     }
                 }
             }
         }
 
     } else{
-        if(isBlinking){
+        
+        Serial.println("Blinking off");
          turnBlinkerOff();
-        }
+         isBlinking=false;
+        
     }
 }
 
 void setBlinkingDirection(void){
-if( GetSteeringDirection() ==0){
+if( GetSteeringDirection() == 0){
     PORTB |= (1<<BLINKER_LINKS);
     } else PORTB |= (1<<BLINKER_RECHTS);
 }
