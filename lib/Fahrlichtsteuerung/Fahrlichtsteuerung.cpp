@@ -61,7 +61,7 @@ void drivinglights (void){
     *  5V -> 1023
     *  definded: darkness from 0V to 2,5V (from 0 to 511)
     */
-    brightness = analogRead(BRIGHTNESS_PIN);
+    brightness = adc_read(BRIGHTNESS_PIN);
 
     //in automatic operation and it is dark (brightness < 511)
     if(GetLightSwitchStatus() == 1 && brightness < 511){

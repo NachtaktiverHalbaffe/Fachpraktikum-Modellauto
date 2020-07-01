@@ -15,6 +15,7 @@
 #include "GlobalDefinitions.h"
 #include "RemoteControlDriver.h"
 #include "KollisionsUeberwachung.h"
+#include "AkkuAnzeige.h"
 
 /**************************************** Definitions **********************************************************************/
 
