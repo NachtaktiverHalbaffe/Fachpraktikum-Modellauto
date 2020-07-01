@@ -46,12 +46,12 @@ int brightness = 0;
 
 /******************************************* implementation of functions ******************************************************/
 
-//manages whether the port is input (1) or output (0)
+//manages whether the port is input (0) or output (1)
 void lightControlInit (void){
-    DDRD |= (0 << DRIVINGLIGHT_PIN);
-    DDRB |= (0 << BRAKELIGHTS_PIN); 
-    DDRB |= (0 << BACKWARDSLIGHT_PIN);
-    DDRC |= (1 << BRIGHTNESS_PIN);
+    DDRD |= (1 << DRIVINGLIGHT_PIN);
+    DDRB |= (1 << BRAKELIGHTS_PIN); 
+    DDRB |= (1 << BACKWARDSLIGHT_PIN);
+    DDRC |= (0 << BRIGHTNESS_PIN);
 }
 
 void drivinglights (void){
@@ -72,7 +72,7 @@ void drivinglights (void){
         PORTD |= (1 << DRIVINGLIGHT_PIN);
     }
     //in manual operation and light switch is off
-    else if(GetLightSwitchStatus() == 0){
+    else {
         PORTD &= ~(1 << DRIVINGLIGHT_PIN);
     }
 }
