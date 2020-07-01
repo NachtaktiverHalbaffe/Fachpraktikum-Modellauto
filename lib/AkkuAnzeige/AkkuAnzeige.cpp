@@ -13,7 +13,7 @@
 
 /******************************************* declaration of variables *********************************************************/
  int spannung=0;
- int nBaterien= 4 * (1023 /5); // number of Battery cells and variable to adjust spannung in a value between 0 and 1023
+ int nBatterien= 4 * (1023 /5); // number of Battery cells and variable to adjust spannung in a value between 0 and 1023
 /******************************************* end of variables *****************************************************************/
 
 /******************************************* implementation of functions ******************************************************/
@@ -30,7 +30,7 @@ int adc_read(int adcx) {
 }
 
 int akkuwert(void){
-    spannung = adc_read(VOLTAG_INPUT);// get a value between 0 and 5V and assign it to a numerical value between 0 and 1023
+    spannung = adc_read(VOLTAGE_INPUT);// get a value between 0 and 5V and assign it to a numerical value between 0 and 1023
  if(spannung < (1.5*nBatterien)){
     // The thresholds of a "spannung" value are approximated by the Date Sheet of a "Rechargeable Cylindrical cell Nickel Metal Hydride" battery. 
      if(spannung > (1.31*nBatterien)) {
