@@ -12,14 +12,21 @@
 /******************************************* end of include *******************************************************************/
 
 /******************************************* declaration of variables *********************************************************/
- int spannung=analogRead(A0);// get a value between 0 and 5V and assign it to a numerical value between 0 and 1023
- int nBaterien=4 * (1023 /5); // number of Battery cells and variable to adjust spannung in a value between 0 and 1023
+#define DDRD  =  0B11111111     //PD7 digital output
+#define   VOLTAGE_INPUT 0
+
+void AkkuAnzeigeInit (void){
+    DDRD  =  0B11111111;
+    DDRC |= (0 << VOLTAGE_INPUT);
+ int spannung=0;
+ int nBaterien= 4 * (1023 /5); // number of Battery cells and variable to adjust spannung in a value between 0 and 1023
+
+}
 /******************************************* end of variables *****************************************************************/
 
 /******************************************* implementation of functions ******************************************************/
-int akkuwert(double spannung){
-    int nBaterien=4 * (1023 /5); // number of Battery cells and variable to adjust spannung in a value between 0 and 1023
-    spannung=analogRead(A0);
+int akkuwert(void){
+    spannung = analogRead(DDRC0);// get a value between 0 and 5V and assign it to a numerical value between 0 and 1023
  if(spannung < int(1.5*nBaterien)){
     // The thresholds of a "spannung" value are approximated by the Date Sheet of a "Rechargeable Cylindrical cell Nickel Metal Hydride" battery. 
      if(spannung >int(1.31*nBaterien)) {

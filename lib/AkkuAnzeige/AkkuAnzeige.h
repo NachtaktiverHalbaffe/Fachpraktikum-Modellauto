@@ -15,13 +15,23 @@
 /**************************************** Definitions **********************************************************************/
 
 #define DDRD
+
+
+/* The funcion initializes the voltage input pin and the led output pins. 
+
+*  params: void
+
+*  return: void
+*/
+void AkkuAnzeigeInit (void);
+
  /* The funktion calculets a battery value and rounds it off to a single digit. 
  * 
  * params: voltage of the accumulator
  * 
  * return: int value between 0 and 9
  */
-int akkuwert(int spannung);
+int akkuwert(void);
 
 
 /* The funktion assigns a number between 0 and 9 to an affiliated 7 segment port.
@@ -30,7 +40,9 @@ int akkuwert(int spannung);
 *
 * return: void
 */
-void anzeige7seg( int akkuwert):
+void anzeige7seg( int akkuwert);
+
+
 
 /**************************************** Methods **************************************************************************/
 
