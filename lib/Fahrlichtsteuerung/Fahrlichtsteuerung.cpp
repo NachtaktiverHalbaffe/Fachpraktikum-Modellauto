@@ -59,12 +59,12 @@ void drivinglights (void){
     /* read brightness sensor
     *  OV -> 0
     *  5V -> 1023
-    *  definded: darkness from 2,5V to 5V (from 511 to 1023)
+    *  definded: darkness from 0V to 2,5V (from 0 to 511)
     */
     brightness = analogRead(BRIGHTNESS_PIN);
 
-    //in automatic operation and it is dark (brightness > 511)
-    if(GetLightSwitchStatus() == 1 && brightness > 511){
+    //in automatic operation and it is dark (brightness < 511)
+    if(GetLightSwitchStatus() == 1 && brightness < 511){
         PORTD |= (1 << DRIVINGLIGHT_PIN);
     }
     //in manual operation and light switch is on
@@ -106,7 +106,7 @@ void brakelights (void){
 void backwardslight (void){
 
     //driving backwards
-    if(getVelocity < 0 && GetDrivingDirection() == 1){
+    if(getVelocity() < 0 && GetDrivingDirection() == 1){
         PORTB |= (1 << BACKWARDSLIGHT_PIN);
     } 
     //backwardslights off

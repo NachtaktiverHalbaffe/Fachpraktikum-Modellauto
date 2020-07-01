@@ -65,7 +65,7 @@
    *    4. GetDrivingDirection == 1 (reverse)
    *    5. GetDrivingDirection == 2 (stand)
    * 
-   * the Do's are written above every if-case
+   * the Do's are written above every if-case.
    * 
    */
 
@@ -76,30 +76,51 @@
     
     static float velocity_drive = getVelocity();
 
-    //if car is driving backwards, and collisioncontrol is true -> accelerate forwards until velocity > 0, then go to Idle
-    if ((velocity_drive < 0) && collisioncontrol(true)){
+    //if car is driving backwards, and collisioncontrol(backwards=true) is true -> accelerate forwards until velocity > 0, then go to Idle
+    if ((velocity_drive < 0) & collisioncontrol(true)){
         while (getVelocity() < 0){
             DriveForward(PWM_MAX_FORWARD);
         }
         MotorIdle();
     }
 
-    //if car is driving forwards, and collisioncontrol is true -> accelerate backwards until velocity < 0, then go to Idle
-    else if ((velocity_drive >= 0) && collisioncontrol(false)){
+    //if car is driving forwards, and collisioncontrol(backwards=false) is true -> accelerate backwards until velocity < 0, then go to Idle
+    else if ((velocity_drive > 0) & collisioncontrol(false)){
         while (getVelocity() > 0){
-            DriveForward(PWM_MAX_REVERSE);
+            DriveReverse(PWM_MAX_REVERSE);
         }
         MotorIdle();
     }
 
     //if Remote gives Signal to drive forward -> drive forward with Input-Speed
+    // -> drive forward with Input-Speed if collisioncontrol = false; 
+    // else: drive backward until velocity is >0, then go to idle
     else if (GetDrivingDirection()==0){
-        DriveForward(driving_direction_main);
+        if (!collisioncontrol(false)){
+            DriveForward(driving_direction_main);
+        }
+        else {
+            while (getVelocity() > 0){
+                DriveReverse(PWM_MAX_REVERSE);
+            }
+            MotorIdle();
+        }
+
     }
 
-    //if Remote gives Signal to drive backward -> drive backward with Input-Speed
+    //if Remote gives Signal to drive backward 
+    // -> drive backward with Input-Speed if collisioncontrol = false; 
+    // else: drive forward until velocity is <0, then go to idle
     else if (GetDrivingDirection()==1){
-        DriveReverse(driving_direction_main);
+        if (!collisioncontrol(true)){
+            DriveReverse(driving_direction_main);
+        }
+        else {
+            while (getVelocity() < 0){
+                DriveForward(PWM_MAX_FORWARD);
+            }
+            MotorIdle();
+        }
     }
     //if Remote gives Signal to stand -> go to idle
     else if (GetDrivingDirection()==2){
