@@ -27,9 +27,9 @@ uint16_t adc_read(uint8_t adcx) {
     //Setting up AD-Multiplexer
 	ADMUX	&=	0xf0;
 	ADMUX	|=	adcx;
-    // STart conversion
+    // Start conversion
 	ADCSRA |= (1<<ADSC);
-    //wait until Wait until conversion is finished
+    //Wait until conversion is finished
 	while ( (ADCSRA & _BV(ADSC)) );
 	return ADC;
 }
@@ -86,37 +86,36 @@ int akkuwert(void){
 void anzeige7seg( int akkuwert){
     /* The funktion assigns a number between 0 and 9 an affiliated 7 segment port.
     */
-   DDRD= {0B00000000};
     if( akkuwert== 9){
-        PORTD= {0B11110110};
+        PORTD=  0B11111011;
         //no bit operation are used because most of the bits have to be changed
     }
     if( akkuwert== 8){
-        PORTD= {0B11111110};
+        PORTD = 0B01111111;
     }
     if( akkuwert== 7){
-        PORTD= {0B11100000};
+        PORTD = 0B01110000;
     }
     if( akkuwert== 6){
-        PORTD= {0B10111110};
+        PORTD = 0B01011111;
     }
     if( akkuwert== 5){
-        PORTD= {0B10110110};
+        PORTD = 0B01011011;
     }
     if( akkuwert== 4){
-        PORTD= {0B01100110};
+        PORTD = 0B00110011;
     }
     if( akkuwert== 3){
-        PORTD= {0B11110010};
+        PORTD = 0B01111001;
     }
     if( akkuwert== 2){
-        PORTD= {0B11011010};
+        PORTD = 0B01101101;
     }
     if( akkuwert== 1){
-        PORTD= {0B01100000};
+        PORTD = 0B00110000;
     }
     if( akkuwert== 0){
-        PORTD= {0B11111100};
+        PORTD = 0B11111110;
     }
 }
 /******************************************* end of implementation ************************************************************/
