@@ -73,7 +73,7 @@ void drivinglights (void){
     }
     //in manual operation and light switch is off
     else if(GetLightSwitchStatus() == 0){
-        PORTD |= (1 << DRIVINGLIGHT_PIN);
+        PORTD &= ~(1 << DRIVINGLIGHT_PIN);
     }
 }
 
@@ -109,7 +109,7 @@ void backwardslight (void){
     if(getVelocity < 0 && GetDrivingDirection() == 1){
         PORTB |= (1 << BACKWARDSLIGHT_PIN);
     } 
-    //drivinglights off
+    //backwardslights off
     else {
         PORTB &= ~(1 << BACKWARDSLIGHT_PIN);
     }
