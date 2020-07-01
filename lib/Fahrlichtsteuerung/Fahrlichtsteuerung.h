@@ -21,12 +21,28 @@
 
 /**************************************** Methods **************************************************************************/
 
+/* The funcion initializes the light-pins and the brightness-pin. 
+*  params: void
+*  return: void
+*/
 void lightControlInit (void);
 
+/* The funcion switches on the drivinglight.
+*  params: void
+*  return: void
+*/
 void drivinglights (void);
 
+/* The funcion switches on the brakelights.
+*  params: void
+*  return: void
+*/
 void brakelights (void);
 
+/* The funcion switches on the backwardslight.
+*  params: void
+*  return: void
+*/
 void backwardslight (void);
 
 

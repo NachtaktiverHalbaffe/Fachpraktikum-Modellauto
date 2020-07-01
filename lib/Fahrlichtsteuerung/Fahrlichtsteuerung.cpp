@@ -59,11 +59,12 @@ void drivinglights (void){
     /* read brightness sensor
     *  OV -> 0
     *  5V -> 1023
+    *  definded: darkness from 2,5V to 5V (from 511 to 1023)
     */
     brightness = analogRead(BRIGHTNESS_PIN);
 
-    //in automatic operation and it is dark (brightness < 511)
-    if(GetLightSwitchStatus() == 1 && brightness < 511){
+    //in automatic operation and it is dark (brightness > 511)
+    if(GetLightSwitchStatus() == 1 && brightness > 511){
         PORTD |= (1 << DRIVINGLIGHT_PIN);
     }
     //in manual operation and light switch is on
