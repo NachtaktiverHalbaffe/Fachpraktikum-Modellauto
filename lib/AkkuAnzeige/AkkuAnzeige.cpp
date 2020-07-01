@@ -31,58 +31,51 @@ int adc_read(int adcx) {
 
 int akkuwert(void){
     spannung = adc_read(VOLTAG_INPUT);// get a value between 0 and 5V and assign it to a numerical value between 0 and 1023
- if(spannung < int(1.5*nBaterien)){
+ if(spannung < (1.5*nBatterien)){
     // The thresholds of a "spannung" value are approximated by the Date Sheet of a "Rechargeable Cylindrical cell Nickel Metal Hydride" battery. 
-     if(spannung > int(1.31*nBaterien)) {
-         Serial.println("9");
+     if(spannung > (1.31*nBatterien)) {
+         //Serial.println("9");
         return 9; 
      }
-     else if((spannung > int(1.3*nBaterien)) {
-         Serial.println("8");
+     else if((spannung > (1.3*nBatterien))) {
+         //Serial.println("8");
         return 8; 
      }
-    else if((spannung >int(1.29*nBaterien)) {
-          Serial.println("7");
+    else if((spannung >(1.29*nBatterien))) {
+         // Serial.println("7");
         return 7; 
      }
-    else if((spannung > int(1.275*nBaterien)) {
-        Serial.println("6");
+    else if((spannung > (1.275*nBatterien))) {
+        //Serial.println("6");
         return 6; 
      }
-    else if((spannung > int(1.26*nBaterien)) {
-        Serial.println("5");
+    else if((spannung > (1.26*nBatterien))) {
+        //Serial.println("5");
         return 5; 
      }
-    else if((spannung >int(1.24*nBaterien)) {
-        Serial.println("4");
-         akkuwert =4;
+    else if((spannung >(1.24*nBatterien)) ){
+        //Serial.println("4");
         return 4; 
      }
-    else if((spannung > int(1.23*nBaterien)) {
-        Serial.println("4");
-         akkuwert =3;
+    else if((spannung > (1.23*nBatterien)) ){
+        //Serial.println("4");
         return 3; 
      }
-    else if((spannung >int(1.21*nBaterien)) {
-        Serial.println("3");
-         akkuwert =2;
+    else if((spannung >(1.21*nBatterien)) ){
+       //Serial.println("3");
         return 2; 
      }
-    else if((spannung >int(1.18*nBaterien)) {
-          Serial.println("1");
-         akkuwert =1;
+    else if((spannung >(1.18*nBatterien))) {
+         // Serial.println("1");
         return 1; 
      }
-    else if((spannung <int(1.18*nBaterien)) {
-          Serial.println("0");
-         akkuwert =0;
+    else if((spannung <(1.18*nBatterien))) {
+          //Serial.println("0");
         return 0; 
      }
  }
- else{
-     Serial.println("Voltage to high");
-     return -1:
- }
+     //Serial.println("Error");
+     return -1;
 }
 
 void anzeige7seg( int akkuwert){
