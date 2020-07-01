@@ -14,6 +14,7 @@
 
 /**************************************** Definitions **********************************************************************/
 #define VOLTAGE_INPUT 0
+#define VOLTAG_PIN 23
 
 
 /* The funcion initializes the voltage input pin and the led output pins. 
@@ -41,6 +42,14 @@ int akkuwert(void);
 */
 void anzeige7seg( int akkuwert);
 
+/* Reads the voltage value from an adc pin
+*
+* params: adc pin
+*
+* return: a int value between 0 and 1023 acording to voltages 0 to 5V
+*
+*/
+int adc_read(int adcx);
 
 
 /**************************************** Methods **************************************************************************/

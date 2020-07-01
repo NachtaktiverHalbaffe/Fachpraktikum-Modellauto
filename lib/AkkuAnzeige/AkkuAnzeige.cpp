@@ -19,11 +19,18 @@
 /******************************************* implementation of functions ******************************************************/
 void AkkuAnzeigeInit (void){
     DDRD  =  0B11111111;
-    DDRC &= ~(1 << VOLTAGE_INPUT);
+    ADCSRA |= _BV(ADEN);
+}
+int adc_read(int adcx) {
+	ADMUX	&=	0B11111111;
+	ADMUX	|=	adcx;
+	ADCSRA |= _BV(ADSC);
+	while ( (ADCSRA & _BV(ADSC)) );
+	return ADC;
 }
 
 int akkuwert(void){
-    spannung = analogRead(DDRC);// get a value between 0 and 5V and assign it to a numerical value between 0 and 1023
+    spannung = adc_read(VOLTAG_INPUT);// get a value between 0 and 5V and assign it to a numerical value between 0 and 1023
  if(spannung < int(1.5*nBaterien)){
     // The thresholds of a "spannung" value are approximated by the Date Sheet of a "Rechargeable Cylindrical cell Nickel Metal Hydride" battery. 
      if(spannung > int(1.31*nBaterien)) {
