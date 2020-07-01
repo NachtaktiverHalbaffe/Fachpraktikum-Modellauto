@@ -77,7 +77,7 @@
     static float velocity_drive = getVelocity();
 
     //if car is driving backwards, and collisioncontrol is true -> accelerate forwards until velocity > 0, then go to Idle
-    if ((velocity_drive < 0) && collisioncontrol(true)){
+    if ((velocity_drive <= 0) & collisioncontrol(true)){
         while (getVelocity() < 0){
             DriveForward(PWM_MAX_FORWARD);
         }
@@ -85,7 +85,7 @@
     }
 
     //if car is driving forwards, and collisioncontrol is true -> accelerate backwards until velocity < 0, then go to Idle
-    else if ((velocity_drive >= 0) && collisioncontrol(false)){
+    else if ((velocity_drive >= 0) & collisioncontrol(false)){
         while (getVelocity() > 0){
             DriveForward(PWM_MAX_REVERSE);
         }
