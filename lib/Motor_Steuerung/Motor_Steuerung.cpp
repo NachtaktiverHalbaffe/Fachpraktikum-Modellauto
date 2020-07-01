@@ -65,7 +65,7 @@
    *    4. GetDrivingDirection == 1 (reverse)
    *    5. GetDrivingDirection == 2 (stand)
    * 
-   * the Do's are written above every if-case
+   * the Do's are written above every if-case.
    * 
    */
 
