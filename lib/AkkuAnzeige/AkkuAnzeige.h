@@ -13,8 +13,7 @@
 
 
 /**************************************** Definitions **********************************************************************/
-
-#define DDRD
+#define VOLTAGE_INPUT 0
 
 
 /* The funcion initializes the voltage input pin and the led output pins. 

@@ -18,19 +18,20 @@
 /****************************** declaration of variables ******************************/
 float mTB=0; // Helper for buffering Timer if Timer is already running and the timervalue has to be stored
 bool isBlinking =false; //Helper to see if it already blinks
-const float BLINK_TIME = 0.7;
+const float BLINK_TIME = 0.7; //Seconds of blinking intervall
 /****************************** end of variables **************************************/
 
 
 
 /****************************** implementation of functions ***************************/
 void BlinkerSteuerungInit(void){
+    //set blinker pins as output
     DDRB |= (1 << BLINKER_RECHTS) | (1<< BLINKER_LINKS);
 }
 
 void blink(void){
+    //check if car is steering
     if(GetSteeringDirection()<2) {
-        // Checking if timer is already running
             //checking if a time is already stored in helper
             if(mTB==0){
                 Serial.println("No Buffered Time stored");
@@ -53,7 +54,7 @@ void blink(void){
                 }
             }
     } else{
-        //car isnt steering, turning evrything off
+        //car isnt steering, turning evrything belonging to blinking off
          turnBlinkerOff();
          isBlinking=false;    
     }

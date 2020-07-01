@@ -12,15 +12,14 @@
 /******************************************* end of include *******************************************************************/
 
 /******************************************* declaration of variables *********************************************************/
-#define   VOLTAGE_INPUT 0
+ int spannung=0;
+ int nBaterien= 4 * (1023 /5); // number of Battery cells and variable to adjust spannung in a value between 0 and 1023
 /******************************************* end of variables *****************************************************************/
 
 /******************************************* implementation of functions ******************************************************/
 void AkkuAnzeigeInit (void){
     DDRD  =  0B11111111;
-    DDRC |= (0 << VOLTAGE_INPUT);
- int spannung=0;
- int nBaterien= 4 * (1023 /5); // number of Battery cells and variable to adjust spannung in a value between 0 and 1023
+    DDRC &= ~(1 << VOLTAGE_INPUT);
 }
 
 int akkuwert(void){
