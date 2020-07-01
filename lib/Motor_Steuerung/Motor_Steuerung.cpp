@@ -70,11 +70,11 @@
    */
 
   void Drive(void){
-    static int driving_direction_main;
+    int driving_direction_main;
     driving_direction_main = GetRemoteSignal(DRIVING_DIRECTION)/2;
 
     
-    static float velocity_drive = getVelocity();
+    float velocity_drive = getVelocity();
 
     //if car is driving backwards, and collisioncontrol(backwards=true) is true -> accelerate forwards until velocity > 0, then go to Idle
     if ((velocity_drive < 0) & collisioncontrol(true)){
@@ -145,15 +145,22 @@
   */
   void Steer(void){
     static int velocity_steer = getVelocity();
-    static int steering_direction_main;
+    int steering_direction_main;
     steering_direction_main = GetRemoteSignal(STEERING_DIRECTION);
     steering_direction_main = int(steering_direction_main/8.5)+30;
     if (((velocity_steer >= 0) and !collisioncontrol(false)) or ((velocity_steer < 0) and !collisioncontrol(true))){
         SetSteering(steering_direction_main);
+        if ((GetDrivingDirection()==0) or (GetDrivingDirection()==2)){
+            SetSensor(steering_direction_main);
+        }
+        else if (GetDrivingDirection()==1){
+            SetSensor(SENSOR_SERVO_MAX_RIGHT - (SENSOR_SERVO_MAX_LEFT - steering_direction_main));
+        }
     }
     else {
         //gerade aus
         SetSteering(90);
+        SetSensor(90);
     }
   }
 
