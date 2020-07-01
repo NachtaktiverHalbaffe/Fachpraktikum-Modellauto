@@ -9,6 +9,7 @@
 #define AKKUANZEIGE_H_
 
 #include <avr/io.h>
+#include <stdint.h>
 #include "GlobalDefinitions.h"
 
 
@@ -49,7 +50,7 @@ void anzeige7seg( int akkuwert);
 * return: a int value between 0 and 1023 acording to voltages 0 to 5V
 *
 */
-int adc_read(int adcx);
+uint16_t adc_read(uint8_t adcx);
 
 
 /**************************************** Methods **************************************************************************/

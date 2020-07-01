@@ -19,12 +19,17 @@
 /******************************************* implementation of functions ******************************************************/
 void AkkuAnzeigeInit (void){
     DDRD  =  0B11111111;
-    ADCSRA |= _BV(ADEN);
+    DDRC |= (0 << VOLTAGE_INPUT);
+    //Enable ADC
+    ADCSRA |= (1 << ADEN);
 }
-int adc_read(int adcx) {
-	ADMUX	&=	0B11111111;
+uint16_t adc_read(uint8_t adcx) {
+    //Setting up AD-Multiplexer
+	ADMUX	&=	0xf0;
 	ADMUX	|=	adcx;
-	ADCSRA |= _BV(ADSC);
+    // STart conversion
+	ADCSRA |= (1<<ADSC);
+    //wait until Wait until conversion is finished
 	while ( (ADCSRA & _BV(ADSC)) );
 	return ADC;
 }
