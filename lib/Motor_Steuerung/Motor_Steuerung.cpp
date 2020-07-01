@@ -93,6 +93,8 @@
     }
 
     //if Remote gives Signal to drive forward -> drive forward with Input-Speed
+    // -> drive forward with Input-Speed if collisioncontrol = false; 
+    // else: drive backward until velocity is >0, then go to idle
     else if (GetDrivingDirection()==0){
         if (!collisioncontrol(false)){
             DriveForward(driving_direction_main);
@@ -106,7 +108,9 @@
 
     }
 
-    //if Remote gives Signal to drive backward -> drive backward with Input-Speed
+    //if Remote gives Signal to drive backward 
+    // -> drive backward with Input-Speed if collisioncontrol = false; 
+    // else: drive forward until velocity is <0, then go to idle
     else if (GetDrivingDirection()==1){
         if (!collisioncontrol(true)){
             DriveReverse(driving_direction_main);
