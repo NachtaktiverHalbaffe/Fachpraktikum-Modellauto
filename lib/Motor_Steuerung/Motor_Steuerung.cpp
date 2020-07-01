@@ -145,22 +145,22 @@
   */
   void Steer(void){
     static int velocity_steer = getVelocity();
-    int steering_direction_main;
+    static int steering_direction_main;
     steering_direction_main = GetRemoteSignal(STEERING_DIRECTION);
     steering_direction_main = int(steering_direction_main/8.5)+30;
     if (((velocity_steer >= 0) and !collisioncontrol(false)) or ((velocity_steer < 0) and !collisioncontrol(true))){
         SetSteering(steering_direction_main);
-        if ((GetDrivingDirection()==0) or (GetDrivingDirection()==2)){
-            SetSensor(steering_direction_main);
-        }
-        else if (GetDrivingDirection()==1){
-            SetSensor(SENSOR_SERVO_MAX_RIGHT - (SENSOR_SERVO_MAX_LEFT - steering_direction_main));
-        }
     }
     else {
         //gerade aus
         SetSteering(90);
         SetSensor(90);
+    }
+    if ((GetDrivingDirection()==0) or (GetDrivingDirection()==2)){
+            SetSensor(steering_direction_main);
+    }
+    else if (GetDrivingDirection()==1){
+            SetSensor(SENSOR_SERVO_MAX_RIGHT - (SENSOR_SERVO_MAX_LEFT - steering_direction_main));
     }
   }
 
