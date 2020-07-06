@@ -33,7 +33,15 @@
 /*
  * unsigned int ReadSonic(unsigned char channel)
  *
- * return: current velocity with velocity<0 for driving backwards
+ * return: current velocity with velocity < 0 for driving backwards
+ * 
+ * Hinweis: Zur Geschwindigkeitsermittlung werden die Frontsensoren primär benutzt (außer der Sensor ist out of Range). 
+ * Theoretisch hätten die Werte aus beiden Sensoren verglichen und bei zu großen Unterschied anhand von anderen Fahrdaten die 
+ * zuverlässigste Geschwindigkeit wählen sollen. 
+ * Da in der Simulation praktisch die Geschwindigkeiten immer sehr weit auseinander liegen, da man nicht beide Sonare gleichzeitig 
+ * in der gleichen Geschwindigkeit bedienen kann, und generell die Input-Daten sich nicht so verhalten wie in der Realität (wenn 
+ * der Antrieb z.B. auf vorwärts eingestellt wird wird verändern sich die Sonare nicht analog dazu usw), wurde auf eine solche 
+ * Fehlererkennung verzichtet, um Probleme bei der Simulation bzw der Präsentation der Simulation zu vermeiden.
  */
 float getVelocity(void);
 

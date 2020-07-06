@@ -18,7 +18,7 @@
 /****************************** declaration of variables ******************************/
 float mT=0; //Helper to store a current Time of an timer
 float mD=0; //Helper to store a current Distance
-float velocity = 0.0;
+float velocity = 0.0; //Last measured velocity
 
 /****************************** end of variables **************************************/
 
