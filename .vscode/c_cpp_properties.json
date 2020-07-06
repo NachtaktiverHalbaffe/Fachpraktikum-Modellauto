@@ -7,6 +7,7 @@
             "name": "Mac",
             "macFrameworkPath": [],
             "includePath": [
+                "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/AkkuAnzeige",
                 "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/Blinkersteuerung",
                 "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/Fahrlichtsteuerung",
                 "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/HupenSteuerung",
@@ -18,7 +19,6 @@
                 "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/SonicDriver",
                 "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/TimerDriver",
                 "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/.pio/libdeps/uno/Servo_ID883/src",
-                "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/AkkuAnzeige",
                 "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/Fernsteuerung",
                 "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/libraries/HID/src",
@@ -35,6 +35,7 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
+                    "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/AkkuAnzeige",
                     "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/Blinkersteuerung",
                     "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/Fahrlichtsteuerung",
                     "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/HupenSteuerung",
@@ -46,7 +47,6 @@
                     "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/SonicDriver",
                     "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/TimerDriver",
                     "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/.pio/libdeps/uno/Servo_ID883/src",
-                    "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/AkkuAnzeige",
                     "/Users/rouvenrischert/Desktop/UNI/Fachpraktikum - Programmierung Mikrocontroller/GitHub/Fachpraktikum_Modellauto/lib/Fernsteuerung",
                     "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "/Users/rouvenrischert/.platformio/packages/framework-arduino-avr/libraries/HID/src",
