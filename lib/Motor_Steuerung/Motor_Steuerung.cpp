@@ -76,12 +76,12 @@
     
     float velocity_drive = getVelocity();
 
-    //if car is driving backwards, and collisioncontrol(backwards=true) is true -> accelerate forwards until velocity > 0, then go to Idle
+    //if car is driving backwards, and collisioncontrol(backwards=true) is true -> accelerate forwards
     if ((velocity_drive < 0) & collisioncontrol(true)){
         DriveForward(PWM_MAX_FORWARD);
     }
 
-    //if car is driving forwards, and collisioncontrol(backwards=false) is true -> accelerate backwards until velocity < 0, then go to Idle
+    //if car is driving forwards, and collisioncontrol(backwards=false) is true -> accelerate backwards
     else if ((velocity_drive > 0) & collisioncontrol(false)){
         DriveReverse(PWM_MAX_REVERSE);
     }
@@ -101,7 +101,7 @@
 
     //if Remote gives Signal to drive backward 
     // -> drive backward with Input-Speed if collisioncontrol = false; 
-    // else: drive forward until velocity is <0, then go to idle
+    // else: drive forward
     else if (GetDrivingDirection()==1){
         if (!collisioncontrol(true)){
             DriveReverse(driving_direction_main);
