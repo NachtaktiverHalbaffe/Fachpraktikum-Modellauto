@@ -52,7 +52,7 @@ float getVelocity(void){
             delta_distance = mD - (float)ReadSonic(0)/100 ; 
             mD= (float)ReadSonic(0)/100;
         } else {
-            delta_distance = mD -(float)ReadSonic(1)/100 ;
+            delta_distance = (float)ReadSonic(1)/100 - mD ;
             mD= (float)ReadSonic(1)/100;
             }
         // calculating velocity and returning it
