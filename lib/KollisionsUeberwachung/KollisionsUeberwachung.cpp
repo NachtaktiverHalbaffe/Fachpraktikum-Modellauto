@@ -46,8 +46,9 @@ float getVelocity(void){
         mT = getTime();
         float delta_distance = 0;
         // Determing that front sonic isnt out of range, otherwise using back sensor
+        // Calculating driven distance since last measurement and storing actual distance in helper for next iteration
         if(ReadSonic(0)<490){
-            // Calculating driven distance since last measurement and storing actual distance in helper for next iteration
+            //using front sensor for measurent if it isnt out of range 
             delta_distance = mD - (float)ReadSonic(0)/100 ; 
             mD= (float)ReadSonic(0)/100;
         } else {

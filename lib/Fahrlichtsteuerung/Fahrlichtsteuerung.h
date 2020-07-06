@@ -16,7 +16,7 @@
 #include "RemoteControlDriver.h"
 #include "KollisionsUeberwachung.h"
 #include "AkkuAnzeige.h"
-
+#include <stdlib.h>
 /**************************************** Definitions **********************************************************************/
 
 
