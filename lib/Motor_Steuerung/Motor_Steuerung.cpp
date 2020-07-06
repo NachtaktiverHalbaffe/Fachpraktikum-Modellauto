@@ -156,11 +156,8 @@
         SetSteering(90);
         SetSensor(90);
     }
-    if ((GetDrivingDirection()==0) or (GetDrivingDirection()==2)){
+    if ((GetDrivingDirection()==0) or (GetDrivingDirection()==2) or (GetDrivingDirection()==1)){
             SetSensor(steering_direction_main);
-    }
-    else if (GetDrivingDirection()==1){
-            SetSensor(SENSOR_SERVO_MAX_RIGHT - (steering_direction_main - SENSOR_SERVO_MAX_LEFT ));
     }
   }
 
