@@ -76,33 +76,24 @@
     
     float velocity_drive = getVelocity();
 
-    //if car is driving backwards, and collisioncontrol(backwards=true) is true -> accelerate forwards until velocity > 0, then go to Idle
+    //if car is driving backwards, and collisioncontrol(backwards=true) is true -> accelerate forwards
     if ((velocity_drive < 0) & collisioncontrol(true)){
-        while (getVelocity() < 0){
-            DriveForward(PWM_MAX_FORWARD);
-        }
-        MotorIdle();
+        DriveForward(PWM_MAX_FORWARD);
     }
 
-    //if car is driving forwards, and collisioncontrol(backwards=false) is true -> accelerate backwards until velocity < 0, then go to Idle
+    //if car is driving forwards, and collisioncontrol(backwards=false) is true -> accelerate backwards
     else if ((velocity_drive > 0) & collisioncontrol(false)){
-        while (getVelocity() > 0){
-            DriveReverse(PWM_MAX_REVERSE);
-        }
-        MotorIdle();
+        DriveReverse(PWM_MAX_REVERSE);
     }
 
     //if Remote gives Signal to drive forward -> drive forward with Input-Speed
     // -> drive forward with Input-Speed if collisioncontrol = false; 
-    // else: drive backward until velocity is >0, then go to idle
+    // else: drive backward 
     else if (GetDrivingDirection()==0){
         if (!collisioncontrol(false)){
             DriveForward(driving_direction_main);
         }
         else {
-            while (getVelocity() > 0){
-                DriveReverse(PWM_MAX_REVERSE);
-            }
             MotorIdle();
         }
 
@@ -110,21 +101,18 @@
 
     //if Remote gives Signal to drive backward 
     // -> drive backward with Input-Speed if collisioncontrol = false; 
-    // else: drive forward until velocity is <0, then go to idle
+    // else: drive forward
     else if (GetDrivingDirection()==1){
         if (!collisioncontrol(true)){
             DriveReverse(driving_direction_main);
         }
         else {
-            while (getVelocity() < 0){
-                DriveForward(PWM_MAX_FORWARD);
-            }
             MotorIdle();
         }
     }
     //if Remote gives Signal to stand -> go to idle
     else if (GetDrivingDirection()==2){
-        MotorIdle();
+        MotorIdle(); 
     }
   }
 
@@ -156,11 +144,8 @@
         SetSteering(90);
         SetSensor(90);
     }
-    if ((GetDrivingDirection()==0) or (GetDrivingDirection()==2)){
+    if ((GetDrivingDirection()==0) or (GetDrivingDirection()==2) or (GetDrivingDirection()==1)){
             SetSensor(steering_direction_main);
-    }
-    else if (GetDrivingDirection()==1){
-            SetSensor(SENSOR_SERVO_MAX_RIGHT - (steering_direction_main - SENSOR_SERVO_MAX_LEFT ));
     }
   }
 
