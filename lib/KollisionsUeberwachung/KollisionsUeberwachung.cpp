@@ -28,11 +28,13 @@ float velocity = 0.0; //Last measured velocity
 float getVelocity(void){
     if(mT == 0){
         Serial.println("No buffered time");
-        // Determing that front sonic isnt out of range, otherwise using back sensor
+        // Determing that front sonic isnt out of range, otherwise using back sensor or dont change last value
         if(ReadSonic(1)<490){
             // Storing actual distance in Helper for future iterations
             mD= (float)ReadSonic(0)/100; 
-        } else mD= (float)ReadSonic(1)/100;
+        } else if(ReadSonic(0)<490){
+            mD= (float)ReadSonic(1)/100;
+            }
         // Storing actual time in Helper for future iterations
         mT= getTime();
         return velocity;
@@ -51,10 +53,15 @@ float getVelocity(void){
             //using front sensor for measurent if it isnt out of range 
             delta_distance = mD - (float)ReadSonic(0)/100 ; 
             mD= (float)ReadSonic(0)/100;
-        } else {
+        } else if(ReadSonic(1)<490) {
             delta_distance = (float)ReadSonic(1)/100 - mD ;
             mD= (float)ReadSonic(1)/100;
             }
+        else {
+            // Both sensors out of range => returning last stored velocity
+            Serial.println("Error: Both Sonars out of range. Returning last value.");
+            return velocity;
+        }
         // calculating velocity and returning it
         velocity = delta_distance/delta_time;
         Serial.println("");
