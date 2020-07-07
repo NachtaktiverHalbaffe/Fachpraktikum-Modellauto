@@ -84,13 +84,13 @@ void brakelights (void){
     if (getVelocity() > 0 && GetDrivingDirection() == 1){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
-        Serial.println("driving forward -> braking"); //passt nicht; fährt rückwärts gegen Wand
+        Serial.println("driving forward -> braking"); 
     } 
     //driving backwards -> braking
     else if(getVelocity() < 0 && GetDrivingDirection() == 0){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
-        Serial.println("driving backwards -> braking"); //passt nicht; fährt eigentlich vorwärts?
+        Serial.println("driving backwards -> braking"); 
     }
     //driving forwards and collision -> braking
     else if(getVelocity() > 0 && collisioncontrol(false) == true){
