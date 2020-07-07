@@ -104,7 +104,6 @@ void brakelights (void){
         Serial.println(" ");
         Serial.println("driving backwards and collision");
     }
-    
     // collision
     else if(collisioncontrol(false) == true || collisioncontrol(true) == true){
         PORTB |= (1 << BRAKELIGHTS_PIN);
@@ -112,7 +111,7 @@ void brakelights (void){
         Serial.println("collision");
     }
     // standing
-    else if(getVelocity() == 0 && GetDrivingDirection() == 2){
+    else if((getVelocity() == 0 && GetDrivingDirection() == 2) || getVelocity() == 0){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("standing");
