@@ -86,20 +86,20 @@ void brakelights (void){
         Serial.println(" ");
         Serial.println("driving forward -> braking"); 
     } 
-    //driving backwards -> braking
-    else if(getVelocity() < 0 && GetDrivingDirection() == 0){
+    //driving backwards and accelareting forward -> braking
+    else if((getVelocity() < 0 && GetDrivingDirection() == 0) && getIsInRange()){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("driving backwards -> braking"); 
     }
     //driving forwards and collision -> braking
-    else if(getVelocity() > 0 && collisioncontrol(false) == true){
+    else if((getVelocity() > 0 && collisioncontrol(false) == true) && getIsInRange()){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("driving forwards and collision");
     }
     //driving backwards and collision -> braking
-    else if(getVelocity() < 0 && collisioncontrol(true) == true){
+    else if((getVelocity() < 0 && collisioncontrol(true) == true) && getIsInRange()){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("driving backwards and collision");
@@ -111,7 +111,7 @@ void brakelights (void){
         Serial.println("collision");
     }
     // standing
-    else if((getVelocity() == 0 && GetDrivingDirection() == 2) || getVelocity() == 0){
+    else if((GetDrivingDirection() == 2) && getVelocity() == 0 ){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("standing");
@@ -124,9 +124,12 @@ void brakelights (void){
 
 
 void backwardslight (void){
-
+    //check if car is breaking and if breaking turning off backwardslights
+     if(GetDrivingDirection() == 1 && getVelocity()>0 && getIsInRange()){
+        PORTB &= ~(1 << BACKWARDSLIGHT_PIN);
+     }
     //driving backwards
-    if(getVelocity() < 0 && GetDrivingDirection() == 1){
+    else if(GetDrivingDirection() == 1){  
         PORTB |= (1 << BACKWARDSLIGHT_PIN);
     } 
     //backwardslights off

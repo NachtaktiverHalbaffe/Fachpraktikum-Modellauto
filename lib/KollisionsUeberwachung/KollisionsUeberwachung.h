@@ -31,7 +31,7 @@
 
 
 /*
- * unsigned int ReadSonic(unsigned char channel)
+ * unsigned float getVelocity(void)
  *
  * return: current velocity with velocity < 0 for driving backwards
  * 
@@ -41,13 +41,13 @@
  * Da in der Simulation praktisch die Geschwindigkeiten immer sehr weit auseinander liegen, da man nicht beide Sonare gleichzeitig 
  * in der gleichen Geschwindigkeit bedienen kann, und generell die Input-Daten sich nicht so verhalten wie in der Realität (wenn 
  * der Antrieb z.B. auf vorwärts eingestellt wird wird verändern sich die Sonare nicht analog dazu usw), wurde auf eine solche 
- * Fehlererkennung verzichtet, um Probleme bei der Simulation bzw der Präsentation der Simulation zu vermeiden.
+ * Fehlererkennung und erkennung von z.B. Streueffekten verzichtet, um Probleme bei der Simulation bzw der Präsentation der Simulation zu vermeiden.
  */
 float getVelocity(void);
 
 
 /*
- * unsigned int ReadSonic(unsigned char channel)
+ * bool collisioncontrol(bool isDrivingBackwards)
  * 
  * argument: if car is driving backwards that the collisiomncontrol uses the back sensor
  *
@@ -57,5 +57,13 @@ bool collisioncontrol(bool isDrivingBackwards);
 
 /** Private **/
 
+/*
+ * bool getIsInRange(void)
+ * 
+ * Simple Getter
+ *
+ * return: sensors are in range (true) or not (false)
+ */
+bool getIsInRange(void);
 
 #endif /* KOLLISIONSUEBERWACHUNG_H_ */
