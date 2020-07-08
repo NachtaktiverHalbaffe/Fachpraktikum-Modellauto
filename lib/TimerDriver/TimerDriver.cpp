@@ -42,11 +42,13 @@ void startTimer(void){
     sei();// allow interrupts
 }
 
+//simple getter
 float getTime(void){ 
    return time;
 }
 
 ISR(TIMER2_COMPA_vect) {
+  //calculating timer time in seconds
   time= time+0.008;
 }
 
