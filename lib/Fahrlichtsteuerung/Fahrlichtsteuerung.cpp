@@ -81,25 +81,25 @@ void drivinglights (void){
 void brakelights (void){
     
     //driving forward -> braking
-    if (getVelocity() > 0 && GetDrivingDirection() == 1){
+    if ((getVelocity() > 0 && getIsInRange()) && GetDrivingDirection() == 1){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("driving forward -> braking"); 
     } 
     //driving backwards and accelareting forward -> braking
-    else if((getVelocity() < 0 && GetDrivingDirection() == 0) && getIsInRange()){
+    else if( (getVelocity() < 0 && getIsInRange()) && GetDrivingDirection() == 0){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("driving backwards -> braking"); 
     }
     //driving forwards and collision -> braking
-    else if((getVelocity() > 0 && collisioncontrol(false) == true) && getIsInRange()){
+    else if((getVelocity() > 0 && getIsInRange()) && collisioncontrol(false) == true ){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("driving forwards and collision");
     }
     //driving backwards and collision -> braking
-    else if((getVelocity() < 0 && collisioncontrol(true) == true) && getIsInRange()){
+    else if((getVelocity() < 0 && getIsInRange()) && collisioncontrol(true) == true){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("driving backwards and collision");
@@ -111,7 +111,7 @@ void brakelights (void){
         Serial.println("collision");
     }
     // standing
-    else if((GetDrivingDirection() == 2) && getVelocity() == 0 ){
+    else if(GetDrivingDirection() == 2 && (getVelocity() == 0 && getIsInRange())){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("standing");
@@ -125,7 +125,7 @@ void brakelights (void){
 
 void backwardslight (void){
     //check if car is breaking and if breaking turning off backwardslights
-     if(GetDrivingDirection() == 1 && getVelocity()>0 && getIsInRange()){
+     if(GetDrivingDirection() == 1 && (getVelocity()>0 && getIsInRange())){
         PORTB &= ~(1 << BACKWARDSLIGHT_PIN);
      }
     //driving backwards
