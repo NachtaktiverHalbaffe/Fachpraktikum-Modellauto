@@ -111,7 +111,7 @@ void brakelights (void){
         Serial.println("collision");
     }
     // standing
-    else if(GetDrivingDirection() == 2 && (getVelocity() == 0 && getIsInRange())){
+    else if((GetDrivingDirection() == 2 && (getVelocity() == 0 && getIsInRange())) || (GetDrivingDirection() == 2 && !getIsInRange())){
         PORTB |= (1 << BRAKELIGHTS_PIN);
         Serial.println(" ");
         Serial.println("standing");
