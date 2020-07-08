@@ -73,8 +73,6 @@ float getVelocity(void){
         isInRange= true;
         return velocity;
     }
-
-
 }
 
 bool collisioncontrol(bool isDrivingBackwards){
@@ -92,7 +90,7 @@ velocity = getVelocity();
  *  => collision is coming when distance <= 0,01 +  velocity * 0,1  
  */
 //collision appearing on driving mode and if sensors are in range and velocity values legit and no old returned ones
-if( (distance <= (0.01 + abs(velocity) * 0.1)) && velocity !=0 && isInRange){
+if((distance <= (0.01 + abs(velocity) * 0.1)) && velocity !=0 && isInRange){
     Serial.println("");
     Serial.println("Warning: Collision appearing");
     return true;

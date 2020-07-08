@@ -31,7 +31,7 @@ void startTimer(void){
     TCCR2A = 0;  //Resetting Timer/Counter Control Register A 
     TCCR2B = 0;  //Resetting Timer/Counter Control Register B
     TCNT2 = 0; //Timercount 
-    OCR2A =155; // Output Compare Register A
+    OCR2A =124; // Output Compare Register A
     // set prescaler
     TCCR2B |= (1<<CS22)| (1<<CS21) | (1<<CS20);
     //turn on CTC mode
@@ -47,7 +47,7 @@ float getTime(void){
 }
 
 ISR(TIMER2_COMPA_vect) {
-  time= time+0.01;
+  time= time+0.008;
 }
 
 
