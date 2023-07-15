@@ -1,5 +1,5 @@
 # Fachpraktikum-Modellauto
-A arduino implementation of a AT Mega Controller steering an RC car. It took place in my 4th semester of my Bachelor studys with three other students. My contributions were:
+A implementation of a AT Mega Controller steering an RC car. It took place in my 4th semester of my Bachelor studys with three other students. My contributions were:
 - General setup of project
 - `lib/Kollisionsuebwerachung`
 - `lib/TimerDriver`
